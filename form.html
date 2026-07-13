@@ -2372,6 +2372,55 @@ html::-webkit-scrollbar-thumb:hover {
     background-position: center top;
     background-repeat: no-repeat;
 }
+
+/* =========================================================
+   FIX 8 REVERT (per request): no FV image behind the form.
+   Everything inside the column goes back to EXACTLY the state
+   before FIX 8 — solid #e6f5ff surfaces, transparent outlined
+   cards/inputs (FIX 5/6 look), plain footer bar. The dark FV
+   backdrop on the PC side rails (FIX 7) stays as it was.
+   ========================================================= */
+.page-container {
+    background-image: none;      /* removes the blended FV image from the column */
+    background-color: #e6f5ff;
+}
+
+#diagnosticWizardView {
+    background: #e6f5ff;
+}
+
+#thankYouView {
+    background-color: #e6f5ff;
+}
+
+.cta-action-sheet {
+    background-color: #e6f5ff;
+}
+
+.wizard-footer-nav {
+    background: #e6f5ff;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+
+/* Cards and inputs back to the approved transparent-outline
+   style (selected orange + hover/focus white states untouched) */
+.selection-card {
+    background: transparent;
+}
+
+.gender-option-btn {
+    background: transparent;
+}
+
+.custom-select-ui,
+.custom-input-ui {
+    background-color: transparent;
+}
+
+.thanks-info-card {
+    background: transparent;
+}
     </style>
 </head>
 <body>
