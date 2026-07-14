@@ -2424,13 +2424,15 @@ html::-webkit-scrollbar-thumb:hover {
 
 /* =========================================================
    FIX 9a) 「カンタン応募はこちらから」の横ライン調整:
-   The bubble text was positioned with hand-tuned pixel offsets
-   (margin-left/top), so it drifted off the bubble's horizontal
-   centre line at some widths. Now the text box covers the whole
-   bubble and flex-centres itself, with a small upward optical
-   shift to account for the tail at the bubble's bottom — the
-   text sits ON the bubble's line at every screen size.
-   TUNING KNOB: adjust translateY(-7%) to nudge up/down.
+   The text box covers the whole bubble and flex-centres itself.
+   The bubble artwork sits slightly right-and-down of its image
+   box's true centre (that's why the original design nudged the
+   text +12px/+4px), so the same nudge is applied here as
+   PERCENTAGES of the bubble's own size — meaning the text stays
+   dead-centre of the visible yellow bubble at every screen
+   width, from 320px phones to desktop.
+   TUNING KNOBS: translate(X%, Y%) — X moves right, Y moves down
+   (3.5% ≈ the original 12px at full size, 4% ≈ the original 4px).
    ========================================================= */
 .speech-bubble-text {
     position: absolute;
@@ -2442,7 +2444,7 @@ html::-webkit-scrollbar-thumb:hover {
     align-items: center;
     justify-content: center;
     margin: 0;
-    transform: translateY(-7%);
+    transform: translate(3.5%, 4%);
 }
 
 /* =========================================================
@@ -2480,7 +2482,7 @@ html::-webkit-scrollbar-thumb:hover {
     }
 
     .cta-action-sheet {
-        margin-top: 26px;
+        margin-top: 30px;      /* bubble hangs ≤26.4px here — 30px clears it safely */
     }
 }
 
