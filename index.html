@@ -51,7 +51,6 @@
         .page-container {
             width: 100%;
             max-width: 480px;
-            background-color: #e6f5ff;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -2298,9 +2297,6 @@ html::-webkit-scrollbar-thumb:hover {
    now shows through it faintly — on phones too, not just on the
    PC side rails. TUNING KNOB: raise 0.78 toward 1 for a fainter
    image, lower it for a stronger image. */
-.page-container {
-    background-color: rgba(230, 245, 255, 0.78);   /* was opaque #e6f5ff */
-}
 
 /* These per-view opaque fills were what hid the backdrop inside
    the column — now transparent so the single veil above governs
@@ -2364,7 +2360,6 @@ html::-webkit-scrollbar-thumb:hover {
    lower it for a stronger image.
    ========================================================= */
 .page-container {
-    background-color: #e6f5ff;   /* exact previous color = base + fallback */
     background-image:
         linear-gradient(rgba(230, 245, 255, 0.88), rgba(230, 245, 255, 0.88)),
         url('images/form-bg.png');
@@ -2382,7 +2377,7 @@ html::-webkit-scrollbar-thumb:hover {
    ========================================================= */
 .page-container {
     background-image: none;      /* removes the blended FV image from the column */
-    background-color: #e6f5ff;
+   
 }
 
 #diagnosticWizardView {
@@ -2498,7 +2493,6 @@ html::-webkit-scrollbar-thumb:hover {
    下げるほど濃くなる。
    ========================================================= */
 .page-container {
-    background-color: #e6f5ff;   /* base + fallback = previous solid color */
     background-image:
         linear-gradient(rgba(230, 245, 255, 0.90), rgba(230, 245, 255, 0.90)),
         url('images/form-bg.png');
