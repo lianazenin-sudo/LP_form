@@ -2572,6 +2572,31 @@ html::-webkit-scrollbar-thumb:hover {
     }
 }
 
+        .page-container{
+    width:100%;
+    max-width:480px;
+    min-height:100dvh;
+
+    display:flex;
+    flex-direction:column;
+    position:relative;
+
+    /* Frosted glass effect */
+    background:rgba(255,255,255,0.78);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    /* Softer border */
+    border-left:1px solid rgba(255,255,255,.35);
+    border-right:1px solid rgba(255,255,255,.35);
+
+    /* Much lighter shadow */
+    box-shadow:
+        0 12px 40px rgba(0,0,0,.08);
+
+    overflow:hidden;
+}
+
 
     </style>
 </head>
