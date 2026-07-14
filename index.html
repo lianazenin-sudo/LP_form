@@ -2605,20 +2605,24 @@ html::-webkit-scrollbar-thumb:hover {
 
     .hero-graphic-wrapper{
         position:relative;
-        margin-bottom:60px;
+        aspect-ratio: 480 / 620; /* use your desktop hero ratio */
+        overflow:visible;
+    }
+
+    .hero-main-render{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        display:block;
     }
 
     .speech-bubble-overlay{
         position:absolute;
         left:50%;
         transform:translateX(-50%);
-        bottom:-45px;
+        bottom:-38px;
         width:78%;
         z-index:10;
-    }
-
-    .cta-action-sheet{
-        margin-top:0;
     }
 
 }
