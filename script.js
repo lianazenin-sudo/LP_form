@@ -18,7 +18,14 @@ let hasPopupOpened = false;
 
 /* ---------------------------------------------------------
    Birthday dropdown population
+   CLIENT SPEC: selectable years go back as far as 1970.
+   The newest selectable year is computed automatically as
+   (current year - 18) so applicants are always 18+ without
+   this file needing yearly maintenance.
 --------------------------------------------------------- */
+const OLDEST_BIRTH_YEAR = 1970;                            // ← client spec: back to 1970
+const NEWEST_BIRTH_YEAR = new Date().getFullYear() - 18;   // auto: 18 years old or over
+
 function populateDateMenus() {
   const yearMenu =
     document.getElementById("birthYear") || document.getElementById("year");
@@ -33,7 +40,7 @@ function populateDateMenus() {
   monthMenu.innerHTML = '<option value="">月</option>';
   dayMenu.innerHTML = '<option value="">日</option>';
 
-  for (let y = 2008; y >= 1960; y--)
+  for (let y = NEWEST_BIRTH_YEAR; y >= OLDEST_BIRTH_YEAR; y--)
     yearMenu.options.add(new Option(`${y}年`, y));
   for (let m = 1; m <= 12; m++) monthMenu.options.add(new Option(`${m}月`, m));
   for (let d = 1; d <= 31; d++) dayMenu.options.add(new Option(`${d}日`, d));
