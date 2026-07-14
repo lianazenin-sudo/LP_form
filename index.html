@@ -2591,6 +2591,36 @@ html::-webkit-scrollbar-thumb:hover {
         background:#fff;
     }
 }
+
+        #siteBgLayer {
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+
+        background: url("images/form-bg.png") center top / cover no-repeat;
+    }
+
+    /* White tint over the background */
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+
+        background: rgba(255,255,255,0.78);
+        pointer-events: none;
+    }
+
+    body {
+        background: transparent;
+    }
+
+    .page-container,
+    #landingView,
+    #diagnosticWizardView,
+    #thankYouView {
+        background: transparent;
+    }
     </style>
 </head>
 <body>
