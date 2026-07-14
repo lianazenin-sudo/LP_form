@@ -292,7 +292,6 @@
             display: none;
             flex-direction: column;
             padding: 20px 20px 100px 20px;
-            background: #ffffff;
             min-height: calc(100vh - 64px);
             position: relative;
             transition: opacity 0.4s ease, transform 0.4s ease;
@@ -1413,7 +1412,7 @@
    ヘッダーは元々ビュー外なので常時表示。
 --------------------------------------------------------- */
 #diagnosticWizardView {
-    background: #e6f5ff;   /* same as FV / .page-container */
+    background: transparent;
 }
 
 #thankYouView {
@@ -2540,6 +2539,27 @@ html::-webkit-scrollbar-thumb:hover {
 
 .thanks-info-card {
     background: rgba(255, 255, 255, 0.7);
+}
+
+        #siteBgLayer {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+
+    background-image: url("images/form-bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+        body {
+    background: url("images/form-bg.png") center top / cover no-repeat fixed;
+}
+
+        .page-container,
+#landingView,
+#diagnosticWizardView,
+#thankYouView {
+    background: transparent;
 }
     </style>
 </head>
