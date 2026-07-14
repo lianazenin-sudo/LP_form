@@ -1808,6 +1808,30 @@ body {
     }
 
 }
+
+        .speech-bubble-overlay {
+    width: 78%;
+    max-width: 340px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    bottom: -7%;              /* was -35px */
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+@media (max-width:375px) {
+    .speech-bubble-overlay {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -7%;               /* was -38px, now matches base */
+    width: 78%;
+    z-index: 10;
+    }
+}
 </style>
 </head>
 <body>
