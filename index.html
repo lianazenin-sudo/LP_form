@@ -2541,56 +2541,6 @@ html::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.7);
 }
 
-        #siteBgLayer {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-
-    background-image: url("images/form-bg.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-        body {
-    background: url("images/form-bg.png") center top / cover no-repeat fixed;
-}
-
-        .page-container,
-#landingView,
-#diagnosticWizardView,
-#thankYouView {
-    background: transparent;
-}
-        #diagnosticWizardView{
-    position:relative;
-    background:transparent;
-}
-
-#diagnosticWizardView::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:rgba(255,255,255,.82);
-    z-index:0;
-}
-
-#diagnosticWizardView>*{
-    position:relative;
-    z-index:1;
-}
-        @media (max-width:480px){
-
-    #siteBgLayer{
-        display:none;
-    }
-
-    body,
-    .page-container,
-    #diagnosticWizardView,
-    #thankYouView{
-        background:#fff;
-    }
-}
 
 #siteBgLayer{
     position:fixed;
