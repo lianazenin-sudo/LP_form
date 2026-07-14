@@ -2469,16 +2469,7 @@ html::-webkit-scrollbar-thumb:hover {
     }
 }
 
-/* Even shorter screens (older/small Androids, ~≤600px tall) */
-@media screen and (max-width: 480px) and (max-height: 600px) {
-    .hero-main-render {
-        max-height: max(180px, calc(100dvh - 270px));
-    }
 
-    .cta-action-sheet {
-        margin-top: 30px;      /* bubble hangs ≤26.4px here — 30px clears it safely */
-    }
-}
 
 /* =========================================================
    FIX 9c) FV atmosphere maintained into the Step screens
