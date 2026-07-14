@@ -2593,9 +2593,22 @@ html::-webkit-scrollbar-thumb:hover {
 }
 
     /* Keep your existing background image */
-    #siteBgLayer{
-        z-index:-2;
-    }
+   #siteBgLayer{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,.78),
+            rgba(255,255,255,.78)
+        ),
+        url("images/form-bg.png");
+
+    background-size:cover;
+    background-position:center top;
+    background-repeat:no-repeat;
+}
 
     /* White overlay */
     body::before{
