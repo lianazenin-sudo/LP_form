@@ -2592,32 +2592,49 @@ html::-webkit-scrollbar-thumb:hover {
     }
 }
 
-        #siteBgLayer {
-        
-
-        background: url("images/form-bg.png") center top / cover no-repeat;
+    /* Keep your existing background image */
+    #siteBgLayer{
+        z-index:-2;
     }
 
-    /* White tint over the background */
-    body::before {
-        content: "";
-        position: fixed;
-       
-
-        background: rgba(255,255,255,0.78);
-        
+    /* White overlay */
+    body::before{
+        content:"";
+        position:fixed;
+        inset:0;
+        background:rgba(255,255,255,.78); /* adjust opacity if needed */
+        z-index:-1;
+        pointer-events:none;
     }
 
-    body {
-        background: transparent;
-    }
-
+    /* Make all page sections transparent so the tint shows through */
     .page-container,
     #landingView,
     #diagnosticWizardView,
-    #thankYouView {
-        background: transparent;
+    #thankYouView{
+        background:transparent !important;
     }
+}
+
+/* Mobile: remove the background image and tint */
+@media (max-width:480px){
+
+    #siteBgLayer{
+        display:none;
+    }
+
+    body::before{
+        display:none;
+    }
+
+    body,
+    .page-container,
+    #landingView,
+    #diagnosticWizardView,
+    #thankYouView{
+        background:#e6f5ff;
+    }
+}
     </style>
 </head>
 <body>
