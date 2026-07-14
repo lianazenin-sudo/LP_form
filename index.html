@@ -2557,16 +2557,21 @@ html::-webkit-scrollbar-thumb:hover {
 /* Mobile: remove the background image and tint */
 @media (max-width:480px){
 
+    .page-container{
+        max-width:100%;
+        width:100%;
+        min-height:100dvh;
 
+        background:rgba(255,255,255,.84);
 
+        backdrop-filter:blur(14px);
+        -webkit-backdrop-filter:blur(14px);
 
-    body,
-    .page-container,
-    #landingView,
-    #diagnosticWizardView,
-    #thankYouView{
-        background:#e6f5ff;
+        border:none;
+
+        box-shadow:none;
     }
+
 }
 
         .page-container{
