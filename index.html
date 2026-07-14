@@ -1590,19 +1590,7 @@ body {
     background-color: transparent;        /* IMPORTANT: lets #siteBgLayer show through */
 }
 
-#siteBgLayer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;                          /* full window incl. scrollbar/gutter areas */
-    height: 100vh;
-    z-index: -1;
-    background-color: #0a1428;             /* fallback color while the image loads */
-    background-image: linear-gradient(rgba(10, 20, 40, 0.55), rgba(10, 20, 40, 0.55)), url('images/form-bg.png');
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-}
+
 
 #diagnosticWizardView {
     min-height: calc(100dvh - 64px);       /* dvh: stable when mobile address bar shows/hides */
@@ -2547,25 +2535,26 @@ html::-webkit-scrollbar-thumb:hover {
 .thanks-info-card {
     background: rgba(255, 255, 255, 0.7);
 }
-
-#siteBgLayer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    background-color: #0a1428;
-    background-image: linear-gradient(rgba(10, 20, 40, 0.55), rgba(10, 20, 40, 0.55)), url('images/form-bg.png');
-    background-size: 100% auto;   /* was: cover */
+        html {
+    background-color: #0a1428;   /* fallback / color once the image runs out */
+    background-image: linear-gradient(rgba(10, 20, 40, 0.55), rgba(10, 20, 40, 0.55)),
+                       url('images/form-bg.png');
+    background-size: 100% auto;      /* scale by width only — matches the column fix from before */
     background-position: center top;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;     /* tile vertically so a long LP never runs out of art */
+    background-attachment: scroll;   /* DEFAULT — this is what makes it move with the page */
+    min-height: 100%;
 }
+
+body {
+    background-color: transparent;   /* let html's background show through */
+}
+
     </style>
 </head>
 <body>
 
-    <div id="siteBgLayer"></div>
+
 
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PMJSL954"
