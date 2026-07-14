@@ -33,1309 +33,744 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="images/form-bg.png">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: "Noto Sans JP", Arial, sans-serif;
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans JP", Arial, sans-serif;
+}
 
-        body {
-            background-color: #f5f5f5;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-        }
+.logo-area {
+    display: flex;
+    align-items: center;
+}
 
-        .page-container {
-            width: 100%;
-            max-width: 480px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
+.util-btn-phone {
+    background: #ffffff;
+    color: #e54d26;
+    border: 2px solid #e54d26;
+    padding: 6px 12px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 38px;
+    box-shadow: 0 3px 0px #d43b15;
+    transition: transform 0.05s ease, box-shadow 0.05s ease;
+}
 
-        .site-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 6px 10px;
-            background: #ffffff;
-            height: 64px;
-        }
+.util-btn-phone:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0px #d43b15;
+}
 
-        .logo-area {
-            display: flex;
-            align-items: center;
-        }
+.util-btn-line {
+    background: #3FDA40;
+    color: #ffffff;
+    border: 2px solid #02BD03;
+    padding: 6px 12px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    height: 38px;
+    box-shadow: 0 3px 0px #02BD03;
+    transition: transform 0.05s ease, box-shadow 0.05s ease;
+}
 
-        .logo-image {
-            height: 48px;
-            width: auto;
-            object-fit: contain;
-        }
+.util-btn-line:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0px #02BD03;
+}
 
-        .header-utils {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
+.ticker-track {
+    display: flex;
+    width: max-content;
+    white-space: nowrap;
+    animation: infiniteScroll 15s linear infinite;
+}
 
-        .util-btn-phone {
-            background: #ffffff;
-            color: #e54d26;
-            border: 2px solid #e54d26;
-            padding: 6px 12px;
-            border-radius: 25px;
-            font-size: 14px;
-            font-weight: 700;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            height: 38px;
-            box-shadow: 0 3px 0px #d43b15;
-            transition: transform 0.05s ease, box-shadow 0.05s ease;
-        }
+.ticker-track span {
+    display: inline-block;
+    letter-spacing: -0.2px;
+}
 
-        .util-btn-phone:active {
-            transform: translateY(2px);
-            box-shadow: 0 1px 0px #d43b15;
-        }
-
-        .util-btn-line {
-            background: #3FDA40;
-            color: #ffffff;
-            border: 2px solid #02BD03;
-            padding: 6px 12px;
-            border-radius: 25px;
-            font-size: 14px;
-            font-weight: 700;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-            height: 38px;
-            box-shadow: 0 3px 0px #02BD03;
-            transition: transform 0.05s ease, box-shadow 0.05s ease;
-        }
-
-        .util-btn-line:active {
-            transform: translateY(2px);
-            box-shadow: 0 1px 0px #02BD03;
-        }
-
-        .header-icon-graphic {
-            height: 20px;
-            width: auto;
-            object-fit: contain;
-            display: inline-block;
-        }
-
-        .alert-ticker {
-            background-color: #cc0000;
-            color: #ffffff;
-            font-size: 14px;
-            font-weight: 700;
-            padding: 20px 0;
-            overflow: hidden;
-            position: relative;
-            width: 100%;
-        }
-
-        .ticker-track {
-            display: flex;
-            width: max-content;
-            white-space: nowrap;
-            animation: infiniteScroll 15s linear infinite;
-        }
-
-        .ticker-track span {
-            display: inline-block;
-            letter-spacing: -0.2px;
-        }
-
-        @keyframes infiniteScroll {
+@keyframes infiniteScroll {
                     0% { transform: translateX(0); }
                     100% { transform: translateX(-50%); }
                 }
 
-        .hero-graphic-wrapper {
-            width: 100%;
-            position: relative;
-            line-height: 0;
-        }
-
-        .hero-main-render {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .speech-bubble-overlay {
-            position: absolute;
-            bottom: -8%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 78%;
-            max-width: 340px;
-            z-index: 5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .speech-bubble-img {
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-            display: block;
-        }
-
-        .speech-bubble-text {
-            position: absolute;
-            color: #284DB4;
-            font-family: "Noto Sans JP", sans-serif;
-            font-weight: 600;
-            font-size: 20px;
-            white-space: nowrap;
-            text-align: center;
-            pointer-events: none;
-            margin-left: 12px;
-            margin-top: 4px;
-        }
-
-        @media (max-width: 373px) {
-            .speech-bubble-text {
-                font-size: 12px;
-                margin-left: 9px;
-                margin-top: 3px;
-            }
-        }
-
-        .cta-action-sheet {
-            margin-top: 50px;
-            background-color: #e6f5ff;
-            padding: 30px 24px 40px 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .btn-cta-diagnostic {
-            width: 100%;
-            max-width: 360px;
-            background: #ffffff;
-            border: 3px solid #D30001;
-            color: #D30001;
-            border-radius: 40px;
-            padding: 16px 8px;
-            font-size: 22px;
-            font-weight: 600;
-            text-align: center;
-            text-decoration: none;
-            display: block;
-            outline: none;
-            box-shadow: 0 6px 0px #D30001, 0 8px 12px rgba(0,0,0,0.15);
-            transition: all 0.05s ease;
-            cursor: pointer;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .btn-cta-diagnostic:active {
-            transform: translateY(4px);
-            box-shadow: 0 2px 0px #D30001, 0 4px 6px rgba(0,0,0,0.15);
-        }
-
-        .btn-cta-line {
-            width: 100%;
-            max-width: 360px;
-            background: #3FDA40;
-            color: #ffffff;
-            border: 3px solid #02BD03;
-            border-radius: 40px;
-            padding: 16px 8px;
-            font-size: 18px;
-            font-weight: 600;
-            text-align: center;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 30px;
-            outline: none;
-            box-shadow: 0 6px 0px #02BD03, 0 8px 12px rgba(0,0,0,0.15);
-            transition: all 0.05s ease;
-            cursor: pointer;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .btn-cta-line:active {
-            transform: translateY(4px);
-            box-shadow: 0 2px 0px #02BD03, 0 4px 6px rgba(0,0,0,0.15);
-        }
-
-        .cta-line-icon-img {
-            height: 40px;
-            width: auto;
-            object-fit: contain;
-            display: block;
-        }
-
-        #diagnosticWizardView {
-            display: none;
-            flex-direction: column;
-            padding: 20px 20px 100px 20px;
-            min-height: calc(100vh - 64px);
-            position: relative;
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-
-        .progress-container {
-            width: 85%;
-            background-color: #e0e0e0;
-            height: 8px;
-            border-radius: 10px;
-            margin: 10px auto 25px auto;
-            overflow: hidden;
-        }
-
-        .progress-bar-fill {
-            height: 100%;
-            width: 20%;
-            background-color: #2b54c5;
-            transition: width 0.3s ease;
-        }
-
-        .meta-status-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            padding: 0 10px;
-        }
-
-        .meta-tag-red {
-            color: #cc0000;
-            font-weight: 700;
-            font-size: 13px;
-        }
-
-        .meta-counter {
-            color: #cc0000;
-            font-weight: 900;
-            font-size: 13px;
-        }
-
-        .step-badge-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 25px;
-            position: relative;
-        }
-
-        .step-badge-pill {
-            background-color: #fff200;
-            color: #1a237e;
-            font-weight: 900;
-            font-size: 14px;
-            padding: 8px 45px;
-            border-radius: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            position: relative;
-        }
-
-        .step-badge-pill::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            right: 35px;
-            border-width: 6px 6px 0;
-            border-style: solid;
-            border-color: #fff200 transparent;
-            display: block;
-            width: 0;
-        }
-
-        .step-badge-container::before {
-            content: '▼';
-            position: absolute;
-            left: 28%;
-            top: -2px;
-            color: #fff200;
-            transform: rotate(135deg);
-            font-size: 10px;
-        }
-
-        .question-title {
-            text-align: center;
-            font-size: 15px;
-            font-weight: 700;
-            color: #333333;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        .question-title span.blue-highlight {
-            color: #2b54c5;
-            text-decoration: none;
-        }
-
-        .wizard-step-content {
-            display: none;
-            opacity: 0;
-            transform: translateX(15px);
-            transition: opacity 0.35s ease-out, transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-            width: 100%;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .wizard-step-content.active {
-            display: flex !important;
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .wizard-step-content.fade-out-left {
-            opacity: 0;
-            transform: translateX(-15px);
-            transition: opacity 0.25s ease-in, transform 0.25s ease-in;
-        }
-
-        .selection-card {
-            background: #ffffff;
-            border: 1px solid #e0e0e0;
-            border-radius: 30px;
-            padding: 14px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.15s ease;
-            text-align: left;
-            position: relative;
-        }
-
-        .selection-card:hover {
-            border-color: #ff6f43;
-            background-color: #fffaf7;
-        }
-
-        .selection-card.selected {
-            border-color: #ff6f43;
-            background-color: #fffaf7;
-        }
-
-        .card-main-txt {
-            font-size: 15px;
-            font-weight: 700;
-            color: #333333;
-        }
-
-        .card-sub-txt {
-            font-size: 11px;
-            color: #888888;
-            margin-top: 3px;
-            font-weight: 400;
-        }
-
-        .card-radio-circle {
-            width: 20px;
-            height: 20px;
-            border: 1px solid #ff6f43;
-            border-radius: 50%;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .selection-card.selected .card-radio-circle::after {
-            content: '';
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 4px solid #ff6f43;
-            box-sizing: border-box;
-        }
-
-        .form-label {
-            font-size: 13px;
-            font-weight: 700;
-            color: #333333;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .form-label span.required-badge {
-            background: #ffeded;
-            color: #cc0000;
-            font-size: 10px;
-            padding: 2px 4px;
-            border-radius: 3px;
-            margin-left: 6px;
-            font-weight: 500;
-        }
-
-        .form-label span.optional-badge {
-            color: #cc0000;
-            font-size: 10px;
-            margin-left: 6px;
-            font-weight: 500;
-        }
-
-        .form-hint-aside {
-            float: right;
-            font-size: 10px;
-            color: #999999;
-            font-weight: 400;
-            margin-top: 3px;
-        }
-
-        .input-group-block {
-            margin-bottom: 20px;
-            width: 100%;
-        }
-
-        .custom-select-ui {
-            width: 100%;
-            padding: 14px 16px;
-            border: 1px solid #e0e0e0;
-            border-radius: 25px;
-            font-size: 14px;
-            color: #333333;
-            background-color: #ffffff;
-            outline: none;
-            appearance: none;
-            -webkit-appearance: none;
-        }
-
-        .custom-input-ui {
-            width: 100%;
-            padding: 14px 16px;
-            border: 1px solid #e0e0e0;
-            border-radius: 25px;
-            font-size: 14px;
-            color: #333333;
-            background-color: #ffffff;
-            outline: none;
-            appearance: none;
-            -webkit-appearance: none;
-        }
-
-        .select-wrapper {
-            position: relative;
-            width: 100%;
-        }
-
-        .select-wrapper::after {
-            content: '＞';
-            transform: rotate(90deg);
-            font-size: 10px;
-            color: #cc0000;
-            position: absolute;
-            right: 20px;
-            top: 16px;
-            pointer-events: none;
-        }
-
-        .gender-split-row {
-            display: flex;
-            gap: 12px;
-            width: 100%;
-        }
-
-        .gender-option-btn {
-            flex: 1;
-            padding: 12px;
-            border: 1px solid #e0e0e0;
-            border-radius: 25px;
-            background: #ffffff;
-            font-weight: 700;
-            font-size: 14px;
-            color: #666666;
-            cursor: pointer;
-            text-align: center;
-        }
-
-        .gender-option-btn.selected {
-            border-color: #ff6f43;
-            background-color: #fffaf7;
-            color: #333333;
-        }
-
-        .birthday-triple-row {
-            display: flex;
-            gap: 8px;
-            width: 100%;
-        }
-
-        .checkbox-container-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 10px;
-            cursor: pointer;
-        }
-
-        .checkbox-custom-box {
-            width: 18px;
-            height: 18px;
-            border: 2px solid #cc0000;
-            border-radius: 2px;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .checkbox-container-row.checked .checkbox-custom-box::after {
-            content: '✓';
-            color: #cc0000;
-            font-weight: 900;
-            font-size: 14px;
-        }
-
-        .checkbox-txt-lbl {
-            font-size: 12px;
-            font-weight: 700;
-            color: #cc0000;
-        }
-
-        .floating-avatar-box {
-            position: absolute;
-            bottom: 75px;
-            right: 10px;
-            width: 60px;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .avatar-img {
-            width: 100%;
-            height: auto;
-        }
-
-        .wizard-footer-nav {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 75px;
-            background: #ffffff;
-            border-top: 1px solid #f0f0f0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-            z-index: 10;
-        }
-
-        .btn-nav-back {
-            width: 46%;
-            height: 44px;
-            border: 2px solid #2b54c5;
-            background: #ffffff;
-            color: #2b54c5;
-            border-radius: 25px;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 3px 0px #1e3da1;
-            transition: all 0.05s;
-        }
-
-        .btn-nav-back:active {
-            transform: translateY(2px);
-            box-shadow: 0 1px 0px #1e3da1;
-        }
-
-        .btn-nav-next {
-            width: 46%;
-            height: 44px;
-            border: 2px solid #ff6f43;
-            background: #ffffff;
-            color: #ff6f43;
-            border-radius: 25px;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 3px 0px #d44e23;
-            transition: all 0.05s;
-        }
-
-        .btn-nav-next:active {
-            transform: translateY(2px);
-            box-shadow: 0 1px 0px #d44e23;
-        }
-
-        #thankYouView {
-            display: none;
-            width: 100%;
-            justify-content: center;
-            background-color: #ffffff;
-            padding: 40px 20px 60px 20px;
-            box-sizing: border-box;
-            transition: opacity 0.4s ease, transform 0.4s ease;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .thanks-viewport-card {
-            background-color: #ffffff;
-            width: 100%;
-            max-width: 450px;
-            border-radius: 16px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-            padding: 35px 20px 45px 20px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .thanks-main-header {
-            text-align: center;
-            width: 100%;
-            margin-bottom: 25px;
-            position: relative;
-        }
-
-        .green-check-icon {
-            width: 64px;
-            height: 64px;
-            background-color: #28a745;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px auto;
-        }
-
-        .thanks-headline {
-            font-size: 18px;
-            font-weight: 900;
-            color: #111111;
-            line-height: 1.5;
-            margin-bottom: 16px;
-            text-align: center;
-        }
-
-        .thanks-headline .green-txt {
-            color: #00cc33;
-        }
-
-        .thanks-subtext {
-            font-size: 10px;
-            color: #666666;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0 10px;
-            font-weight: 500;
-            text-align: center;
-        }
-
-        .thanks-info-card {
-            background: #ffffff;
-            border-radius: 16px;
-            border: 1px solid #f0f0f0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-            width: 100%;
-            padding: 20px 15px 15px 15px;
-            position: relative;
-            margin-top: 25px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .card-badge-blue {
-            background-color: #2b54c5;
-            color: #ffffff;
-            font-size: 9px;
-            font-weight: 700;
-            padding: 6px 14px;
-            border-radius: 20px;
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            white-space: nowrap;
-        }
-
-        .card-phone-flex {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 8px;
-            margin-top: 5px;
-        }
-
-        .phone-side-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .phone-number-block {
-            text-align: left;
-            flex: 1;
-        }
-
-        .large-phone-num {
-            font-size: 30px;
-            font-weight: 900;
-            color: #284DB4;
-            border-bottom: 3px solid #fff200;
-            display: inline-block;
-            line-height: 1.3;
-            margin-bottom: 6px;
-            letter-spacing: -0.5px;
-        }
-
-        .time-guarantee-txt {
-            font-size: 12px;
-            font-weight: 700;
-            color: #333333;
-            margin-top: 2px;
-        }
-
-        .time-guarantee-txt .red-bold {
-            color: #cc0000;
-            font-weight: 900;
-            font-size: 20px;
-        }
-
-        .line-card-spacing {
-            margin-top: 20px;
-            padding: 24px 20px;
-            margin-bottom: 35px;
-        }
-
-        .benefit-bullet-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 20px 0;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .benefit-bullet-list li {
-            font-size: 12px;
-            font-weight: 700;
-            color: #00b027;
-            position: relative;
-            padding-left: 16px;
-            text-align: left;
-        }
-
-        .benefit-bullet-list li::before {
-            content: '●';
-            position: absolute;
-            left: 0;
-            color: #00b027;
-            font-size: 10px;
-        }
-
-        .line-caption-hint {
-            font-size: 11px;
-            color: #a0a0a0;
-            text-align: center;
-            margin: 0 0 10px 0;
-        }
-
-        .btn-thanks-line {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            padding: 16px 24px;
-            border-radius: 40px;
-            width: 100%;
-            box-sizing: border-box;
-            transition: all 0.05s ease;
-            max-width: 320px;
-            background: #3FDA40;
-            border: 3px solid #02BD03;
-            text-align: center;
-            outline: none;
-            box-shadow: 0 6px 0px #02BD03, 0 8px 12px rgba(0,0,0,0.15);
-            cursor: pointer;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .btn-thanks-line:hover {
-            background-color: #24b528;
-        }
-
-        .thanks-urgent-footer {
-            text-align: center;
-            width: 100%;
-            max-width: 300px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .urgent-caption-lbl {
-            font-size: 15px;
-            color: #4a4a4a;
-            font-weight: bold;
-            margin: 0 0 10px 0;
-            text-align: center;
-        }
-
-        .btn-thanks-phone-call {
-            border: 3px solid #E85921;
-            color: #E85921;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            padding: 16px 24px;
-            border-radius: 40px;
-            width: 100%;
-            box-sizing: border-box;
-            transition: all 0.05s ease;
-            max-width: 320px;
-            background: #fff;
-            text-align: center;
-            outline: none;
-            box-shadow: 0 6px 0px #E85921, 0 8px 12px rgba(0,0,0,0.15);
-            cursor: pointer;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .btn-thanks-phone-call:hover {
-            background-color: #fdf5f2;
-        }
-
-        .custom-validation-alert {
-            display: none;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            background: linear-gradient(135deg, #fff5f5 0%, #ffebeb 100%);
-            border: 1px solid #ffcdd2;
-            border-left: 5px solid #ef5350;
-            color: #d32f2f;
-            border-radius: 8px;
-            padding: 14px 18px;
-            margin: 0 auto 20px auto;
-            width: 100%;
-            max-width: 400px;
-            box-sizing: border-box;
-            box-shadow: 0 4px 15px rgba(239, 83, 80, 0.15);
-            animation: alertBounceIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
-
-        .custom-validation-alert .alert-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .custom-validation-alert .alert-text {
-            font-size: 13px;
-            font-weight: bold;
-            line-height: 1.4;
-            text-align: left;
-        }
-
-        @keyframes alertBounceIn {
+.speech-bubble-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+@media (max-width: 373px) {
+    .speech-bubble-text {
+    font-size: 12px;
+    margin-left: 9px;
+    margin-top: 3px;
+    }
+}
+
+.btn-cta-diagnostic:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0px #D30001, 0 4px 6px rgba(0,0,0,0.15);
+}
+
+.btn-cta-line:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0px #02BD03, 0 4px 6px rgba(0,0,0,0.15);
+}
+
+.progress-container {
+    width: 85%;
+    background-color: #e0e0e0;
+    height: 8px;
+    border-radius: 10px;
+    margin: 10px auto 25px auto;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 20%;
+    background-color: #2b54c5;
+    transition: width 0.3s ease;
+}
+
+.meta-tag-red {
+    color: #cc0000;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.meta-counter {
+    color: #cc0000;
+    font-weight: 900;
+    font-size: 13px;
+}
+
+.step-badge-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.step-badge-pill::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    right: 35px;
+    border-width: 6px 6px 0;
+    border-style: solid;
+    border-color: #fff200 transparent;
+    display: block;
+    width: 0;
+}
+
+.step-badge-container::before {
+    content: "▼";
+    position: absolute;
+    left: 28%;
+    top: -2px;
+    color: #fff200;
+    transform: rotate(135deg);
+    font-size: 10px;
+}
+
+.question-title span.blue-highlight {
+    color: #2b54c5;
+    text-decoration: none;
+}
+
+.wizard-step-content {
+    display: none;
+    opacity: 0;
+    transform: translateX(15px);
+    transition: opacity 0.35s ease-out, transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+    width: 100%;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.wizard-step-content.active {
+    display: flex !important;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.wizard-step-content.fade-out-left {
+    opacity: 0;
+    transform: translateX(-15px);
+    transition: opacity 0.25s ease-in, transform 0.25s ease-in;
+}
+
+.selection-card:hover {
+    border-color: #ff6f43;
+    background-color: #fffaf7;
+}
+
+.selection-card.selected {
+    border-color: #ff6f43;
+    background-color: #fffaf7;
+}
+
+.selection-card.selected .card-radio-circle::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 4px solid #ff6f43;
+    box-sizing: border-box;
+}
+
+.form-label span.required-badge {
+    background: #ffeded;
+    color: #cc0000;
+    font-size: 10px;
+    padding: 2px 4px;
+    border-radius: 3px;
+    margin-left: 6px;
+    font-weight: 500;
+}
+
+.form-label span.optional-badge {
+    color: #cc0000;
+    font-size: 10px;
+    margin-left: 6px;
+    font-weight: 500;
+}
+
+.input-group-block {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.custom-select-ui {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 25px;
+    font-size: 14px;
+    color: #333333;
+    background-color: #ffffff;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.custom-input-ui {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 25px;
+    font-size: 14px;
+    color: #333333;
+    background-color: #ffffff;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.gender-split-row {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+
+.gender-option-btn.selected {
+    border-color: #ff6f43;
+    background-color: #fffaf7;
+    color: #333333;
+}
+
+.checkbox-custom-box {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #cc0000;
+    border-radius: 2px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkbox-container-row.checked .checkbox-custom-box::after {
+    content: "✓";
+    color: #cc0000;
+    font-weight: 900;
+    font-size: 14px;
+}
+
+.avatar-img {
+    width: 100%;
+    height: auto;
+}
+
+.btn-nav-back {
+    width: 46%;
+    height: 44px;
+    border: 2px solid #2b54c5;
+    background: #ffffff;
+    color: #2b54c5;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 3px 0px #1e3da1;
+    transition: all 0.05s;
+}
+
+.btn-nav-back:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0px #1e3da1;
+}
+
+.btn-nav-next {
+    width: 46%;
+    height: 44px;
+    border: 2px solid #ff6f43;
+    background: #ffffff;
+    color: #ff6f43;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 3px 0px #d44e23;
+    transition: all 0.05s;
+}
+
+.btn-nav-next:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0px #d44e23;
+}
+
+.thanks-main-header {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.green-check-icon {
+    width: 64px;
+    height: 64px;
+    background-color: #28a745;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px auto;
+}
+
+.thanks-headline .green-txt {
+    color: #00cc33;
+}
+
+.thanks-subtext {
+    font-size: 10px;
+    color: #666666;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0 10px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.phone-side-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.line-card-spacing {
+    margin-top: 20px;
+    padding: 24px 20px;
+    margin-bottom: 35px;
+}
+
+.benefit-bullet-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.benefit-bullet-list li::before {
+    content: "●";
+    position: absolute;
+    left: 0;
+    color: #00b027;
+    font-size: 10px;
+}
+
+.btn-thanks-line {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 16px 24px;
+    border-radius: 40px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.05s ease;
+    max-width: 320px;
+    background: #3FDA40;
+    border: 3px solid #02BD03;
+    text-align: center;
+    outline: none;
+    box-shadow: 0 6px 0px #02BD03, 0 8px 12px rgba(0,0,0,0.15);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn-thanks-line:hover {
+    background-color: #24b528;
+}
+
+.thanks-urgent-footer {
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-thanks-phone-call {
+    border: 3px solid #E85921;
+    color: #E85921;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 16px 24px;
+    border-radius: 40px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.05s ease;
+    max-width: 320px;
+    background: #fff;
+    text-align: center;
+    outline: none;
+    box-shadow: 0 6px 0px #E85921, 0 8px 12px rgba(0,0,0,0.15);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn-thanks-phone-call:hover {
+    background-color: #fdf5f2;
+}
+
+.custom-validation-alert {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #fff5f5 0%, #ffebeb 100%);
+    border: 1px solid #ffcdd2;
+    border-left: 5px solid #ef5350;
+    color: #d32f2f;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 0 auto 20px auto;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 15px rgba(239, 83, 80, 0.15);
+    animation: alertBounceIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.custom-validation-alert .alert-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.custom-validation-alert .alert-text {
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.4;
+    text-align: left;
+}
+
+@keyframes alertBounceIn {
                     0% { opacity: 0; transform: translateY(12px) scale(0.97); }
                     100% { opacity: 1; transform: translateY(0) scale(1); }
                 }
 
-        .shake-element {
-            animation: shakeEffect 0.4s ease-in-out;
-        }
+.shake-element {
+    animation: shakeEffect 0.4s ease-in-out;
+}
 
-        @keyframes shakeEffect {
+@keyframes shakeEffect {
                     0%, 100% { transform: translateX(0); }
                     15%, 45%, 75% { transform: translateX(-6px); }
                     30%, 60%, 90% { transform: translateX(6px); }
                 }
 
-        .modal-overlay-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(4px);
-            z-index: 99999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px;
-            box-sizing: border-box;
-        }
-
-        .modal-card-box {
-            background-color: #DDEEFF;
-            width: 100%;
-            max-width: 390px;
-            border-radius: 28px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            animation: modalPopIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.15) forwards;
-        }
-
-        @keyframes modalPopIn {
+@keyframes modalPopIn {
                     from { opacity: 0; transform: scale(0.9) translateY(20px); }
                     to { opacity: 1; transform: scale(1) translateY(0); }
                 }
 
-        .modal-actions-container {
-            width: 100%;
-            margin-top: 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            box-sizing: border-box;
-            justify-content: center;
-            align-items: center;
-        }
+.modal-actions-container {
+    width: 100%;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+}
 
-        .modal-close-x {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.9);
-            border: none;
-            color: #284DB4;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-        }
+.modal-header-blue {
+    background-color: #284DB4;
+    padding: 25px 20px 10px 20px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
 
-        .modal-header-blue {
-            background-color: #284DB4;
-            padding: 25px 20px 10px 20px;
-            position: relative;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
+.modal-header-text {
+    width: 65%;
+    color: #ffffff;
+    z-index: 2;
+}
 
-        .modal-header-text {
-            width: 65%;
-            color: #ffffff;
-            z-index: 2;
-        }
+.modal-avatar-wrapper {
+    width: 35%;
+    position: relative;
+}
 
-        .modal-header-text h2 {
-            font-size: 19px;
-            font-weight: 900;
-            color: #f7b731;
-            margin: 0 0 6px 0;
-        }
+.modal-avatar-wrapper img {
+    width: 100%;
+    display: block;
+    margin-bottom: -10px;
+}
 
-        .modal-header-text p {
-            font-size: 12.5px;
-            font-weight: bold;
-            line-height: 1.4;
-            margin: 0;
-        }
+.num-badge {
+    width: 18px;
+    height: 18px;
+    background-color: #ffffff;
+    border: 1px solid #9cc4f7;
+    color: #2151c5;
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
 
-        .modal-avatar-wrapper {
-            width: 35%;
-            position: relative;
-        }
+.benefit-bullet-row p strong {
+    color: #2151c5;
+}
 
-        .modal-avatar-wrapper img {
-            width: 100%;
-            display: block;
-            margin-bottom: -10px;
-        }
+.modal-btn-line {
+    width: 80%;
+    background: #3FDA40;
+    color: #ffffff;
+    border: 3px solid #02BD03;
+    border-radius: 40px;
+    padding: 16px 8px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    outline: none;
+    box-shadow: 0 6px 0px #02BD03, 0 8px 12px rgba(0,0,0,0.15);
+    transition: all 0.05s ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
 
-        .benefit-bullet-row {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            background-color: transparent;
-            margin-bottom: 14px;
-            padding: 0 24px 10px 24px;
-            box-sizing: border-box;
-        }
+.modal-btn-line:hover {
+    background-color: #1eb322;
+}
 
-        .num-badge {
-            width: 18px;
-            height: 18px;
-            background-color: #ffffff;
-            border: 1px solid #9cc4f7;
-            color: #2151c5;
-            border-radius: 50%;
-            font-size: 10px;
-            font-weight: 900;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 12px;
-            flex-shrink: 0;
-        }
+.modal-btn-continue {
+    width: 80%;
+    background: #fff;
+    color: #545454;
+    border: 3px solid #D9D9D9;
+    border-radius: 40px;
+    padding: 16px 8px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    outline: none;
+    box-shadow: 0 6px 0px #D9D9D9, 0 8px 12px rgba(0,0,0,0.15);
+    transition: all 0.05s ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    margin-bottom: 30px;
+}
 
-        .benefit-bullet-row p {
-            font-size: 13px;
-            font-weight: bold;
-            color: #25448c;
-            margin: 0;
-        }
+.modal-btn-continue:hover {
+    background-color: #f7f7f7;
+}
 
-        .benefit-bullet-row p strong {
-            color: #2151c5;
-        }
+#landingView {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
 
-        .modal-btn-line {
-            width: 80%;
-            background: #3FDA40;
-            color: #ffffff;
-            border: 3px solid #02BD03;
-            border-radius: 40px;
-            padding: 16px 8px;
-            font-weight: 600;
-            text-align: center;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 30px;
-            outline: none;
-            box-shadow: 0 6px 0px #02BD03, 0 8px 12px rgba(0,0,0,0.15);
-            transition: all 0.05s ease;
-            cursor: pointer;
-            -webkit-tap-highlight-color: transparent;
-        }
+.modal-body-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 20px 20px 25px 20px;
+}
 
-        .modal-btn-line:hover {
-            background-color: #1eb322;
-        }
+.speech-bubble-image {
+    width: 80%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
 
-        .modal-btn-continue {
-            width: 80%;
-            background: #fff;
-            color: #545454;
-            border: 3px solid #D9D9D9;
-            border-radius: 40px;
-            padding: 16px 8px;
-            font-weight: 600;
-            text-align: center;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 30px;
-            outline: none;
-            box-shadow: 0 6px 0px #D9D9D9, 0 8px 12px rgba(0,0,0,0.15);
-            transition: all 0.05s ease;
-            cursor: pointer;
-            -webkit-tap-highlight-color: transparent;
-            margin-bottom: 30px;
-        }
+.header-icon-img {
+    height: 30px;
+    width: auto;
+    object-fit: contain;
+    display: inline-block;
+}
 
-        .modal-btn-continue:hover {
-            background-color: #f7f7f7;
-        }
+.thanks-mascot-wrapper {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 55px;
+}
 
-        #landingView {
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
+.thanks-mascot-img {
+    width: 100%;
+    height: auto;
+}
 
-        .modal-body-content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-sizing: border-box;
-            padding: 20px 20px 25px 20px;
-        }
+.btn-thanks-line:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0px #02BD03, 0 4px 6px rgba(0,0,0,0.15);
+}
 
-        .speech-bubble-image {
-            width: 80%;
-            height: auto;
-            object-fit: contain;
-            display: block;
-        }
+.btn-thanks-phone-call :active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0px #E85921, 0 4px 6px rgba(0,0,0,0.15);
+}
 
-        .speech-bubble-tag {
-            position: absolute;
-            color: #1a42a7;
-            font-family: "Noto Sans JP", sans-serif;
-            font-weight: 900;
-            font-size: 16px;
-        }
+.success-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
 
-        .header-icon-img {
-            height: 30px;
-            width: auto;
-            object-fit: contain;
-            display: inline-block;
-        }
+.success-outer {
+    width: 100px;
+    height: 100px;
+    background-color: #c7f3c9;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        .thanks-mascot-wrapper {
-            position: absolute;
-            left: 10px;
-            top: 10px;
-            width: 55px;
-        }
+.success-inner {
+    width: 75px;
+    height: 75px;
+    background-color: #00b800;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        .thanks-mascot-img {
-            width: 100%;
-            height: auto;
-        }
+.checkmark {
+    width: 10px;
+    height: 20px;
+    border-bottom: 3px solid #ffffff;
+    border-right: 3px solid #ffffff;
+    border-radius: 3px;
+    transform: rotate(45deg);
+    margin-bottom: 8px;
+}
 
-        .card-illustration-img {
-            width: 52px;
-            height: auto;
-        }
+@media (max-width: 360px) {
+    .btn-thanks-line {
+    font-size: 16px;
+    padding: 12px 16px;
+    gap: 10px;
+    }
 
-        .card-phone-status-img {
-            width: 34px;
-            height: auto;
-        }
+    .btn-thanks-phone-call {
+    font-size: 16px;
+    padding: 12px 16px;
+    gap: 10px;
+    }
+}
 
-        .btn-thanks-line:active {
-            transform: translateY(4px);
-            box-shadow: 0 2px 0px #02BD03, 0 4px 6px rgba(0,0,0,0.15);
-        }
-
-        .btn-thanks-line img {
-            height: 40px;
-            width: auto;
-            object-fit: contain;
-            display: block;
-        }
-
-        .btn-thanks-phone-call :active {
-            transform: translateY(4px);
-            box-shadow: 0 2px 0px #E85921, 0 4px 6px rgba(0,0,0,0.15);
-        }
-
-        .btn-thanks-phone-call img {
-            height: 20px;
-            width: auto;
-            object-fit: contain;
-            display: block;
-        }
-
-        .success-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        .success-outer {
-            width: 100px;
-            height: 100px;
-            background-color: #c7f3c9;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .success-inner {
-            width: 75px;
-            height: 75px;
-            background-color: #00b800;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .checkmark {
-            width: 10px;
-            height: 20px;
-            border-bottom: 3px solid #ffffff;
-            border-right: 3px solid #ffffff;
-            border-radius: 3px;
-            transform: rotate(45deg);
-            margin-bottom: 8px;
-        }
-
-        @media (max-width: 360px) {
-            .btn-thanks-line {
-                font-size: 16px;
-                padding: 12px 16px;
-                gap: 10px;
-            }
-
-            .btn-thanks-phone-call {
-                font-size: 16px;
-                padding: 12px 16px;
-                gap: 10px;
-            }
-        }
-
-/* Base Style (Desktop / Tablet) */
 .btn-line-apply {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 16px;
-    
     width: 100%;
     max-width: 320px;
     padding: 16px 8px;
-    
     font-size: 18px;
     font-weight: 600;
     color: #ffffff;
     text-decoration: none;
-    
     background: #3FDA40;
     border: 3px solid #02BD03;
     border-radius: 40px;
     box-shadow: 0 6px 0px #02BD03, 0 8px 12px rgba(0, 0, 0, 0.15);
-    
     cursor: pointer;
     outline: none;
     transition: all 0.05s ease;
     -webkit-tap-highlight-color: transparent;
-}
-
-.btn-line-apply__text {
-    display: flex;
-    flex-direction: row; /* Keeps it single-line on desktop */
-    gap: 4px;
-}
-
-.btn-line-apply__icon {
-    width: 36px; /* Larger icon to match the layout */
-    height: 36px;
-    object-fit: contain;
-    flex-shrink: 0;
 }
 
 .btn-line-apply:active {
@@ -1343,200 +778,78 @@
     box-shadow: 0 2px 0px #02BD03, 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
-/* --- Mobile Version matching your layout --- */
 @media (max-width: 480px) {
     .btn-line-apply {
-        max-width: 200px;    /* Matches the layout proportions */
-        padding: 14px 20px;  /* Generous padding for a clean look */
-        gap: 16px;           /* Spaces the icon and stacked text nicely */
+    max-width: 200px;
+    padding: 14px 20px;
+    gap: 16px;
     }
 
     .btn-line-apply__text {
-        flex-direction: column; /* Stacks the text into two rows on mobile */
-        align-items: flex-start; /* Aligns stacked text nicely to the left */
-        font-size: 12px;        /* Keeps the text bold and highly visible */
-        line-height: 1.25;      /* Comfortable spacing between the two lines */
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 12px;
+    line-height: 1.25;
     }
 
     .btn-line-apply__icon {
-        width: 38px;  /* Keeps the LINE logo large and visible */
-        height: 38px;
+    width: 38px;
+    height: 38px;
     }
-            .large-phone-num {
-            font-size: 22px;
-            
-        }
+
+    .large-phone-num {
+    font-size: 22px;
+    }
 }
 
-/* =========================================================
-   CLIENT FEEDBACK FIXES (appended only — original rules untouched)
-   ========================================================= */
-
-/* ---------------------------------------------------------
-   FIX 1) FV mobile visibility:
-   「寮付き」などのキャッチコピーが緑の装飾と被らないように。
-   スマホでは吹き出しをFV画像に重ねず、画像の"下"に流し込み配置。
-   これでFV内のテキストが何にも覆われず、視認性が確保される。
---------------------------------------------------------- */
 @media screen and (max-width: 480px) {
-
-    .speech-bubble-overlay {
-        position: relative;   /* was: absolute overlapping the hero */
-        bottom: auto;
-        left: auto;
-        transform: none;
-        margin: 10px auto 0 auto;
-        z-index: 2;
-    }
-
-    /* Guarantee the bubble copy stays readable on any background */
-    .speech-bubble-text {
-        display: inline-block;
-        background: #ffffff;
-        border-radius: 6px;
-        padding: 2px 8px;
-        z-index: 3;
-    }
-
-    /* CTA sheet no longer needs to clear a hanging bubble */
-    .cta-action-sheet {
-        margin-top: 16px;
-    }
-}
-
-/* ---------------------------------------------------------
-   FIX 2) FV continuity into the Step form:
-   フォーム画面を真っ白な別ページにせず、FVと同じ背景
-   （ライトブルーの世界観）をそのまま維持する。
-   白いカードで囲わず、フォーム全体が同じ背景の上に載る。
-   ヘッダーは元々ビュー外なので常時表示。
---------------------------------------------------------- */
-#diagnosticWizardView {
-    background: transparent;
-}
-
-#thankYouView {
-    background-color: #e6f5ff;   /* keep the same atmosphere after submit */
-}
-
-/* ---------------------------------------------------------
-   FIX 3) Thank-you page LINE / phone button responsiveness:
-   サンクスページのボタンはカードの入れ子で実際の横幅が狭く
-   （360px端末で実質約240px、320px端末で約200px）、
-   40pxアイコン + 18px文字 + 大きめpaddingが収まらず
-   文字が折り返し／はみ出していた。スマホではアイコン・
-   文字・余白を段階的に縮小し、1行に収まるように調整。
---------------------------------------------------------- */
-@media screen and (max-width: 480px) {
-
     .btn-thanks-line {
-        font-size: 15px;
-        padding: 12px 14px;
-        gap: 8px;
-        white-space: nowrap;
+    font-size: 15px;
+    padding: 12px 14px;
+    gap: 8px;
+    white-space: nowrap;
     }
 
     .btn-thanks-line img {
-        height: 26px;
-        flex-shrink: 0;
+    height: 26px;
+    flex-shrink: 0;
     }
 
     .btn-thanks-phone-call {
-        font-size: 15px;
-        padding: 12px 14px;
-        gap: 8px;
-        white-space: nowrap;
+    font-size: 15px;
+    padding: 12px 14px;
+    gap: 8px;
+    white-space: nowrap;
     }
 
     .btn-thanks-phone-call img {
-        height: 16px;
-        flex-shrink: 0;
+    height: 16px;
+    flex-shrink: 0;
     }
 }
 
-/* Extra-small phones (~320px wide): usable width inside the
-   nested cards is only ~200px, shrink one step further */
 @media screen and (max-width: 360px) {
-
     .btn-thanks-line {
-        font-size: 13px;
-        padding: 10px 10px;
-        gap: 6px;
+    font-size: 13px;
+    padding: 10px 10px;
+    gap: 6px;
     }
 
     .btn-thanks-line img {
-        height: 22px;
+    height: 22px;
     }
 
     .btn-thanks-phone-call {
-        font-size: 13px;
-        padding: 10px 10px;
-        gap: 6px;
+    font-size: 13px;
+    padding: 10px 10px;
+    gap: 6px;
     }
 
     .btn-thanks-phone-call img {
-        height: 14px;
+    height: 14px;
     }
 }
 
-/* ---------------------------------------------------------
-   FIX 4) Form footer button area background:
-   フォーム下部の「戻る / 次へ」ボタンバーが白いままだと
-   FV背景（ライトブルー）との継続性が途切れるため、
-   バーの背景をFVと同じ #e6f5ff に統一し、白い境界線も除去。
---------------------------------------------------------- */
-.wizard-footer-nav {
-    background: #e6f5ff;   /* same as FV / wizard view background */
-    border-top: none;
-}
-
-/* ---------------------------------------------------------
-   FIX 5) 選択肢カードも背景と一体化（continuity）:
-   Step 1〜3 の選択肢カードと Step 4 の性別ボタンの白背景を
-   なくし、FVと同じ背景の上に枠線だけの選択肢として表示。
-   選択時（オレンジの枠＋薄いオレンジ背景）とホバー時の
-   フィードバックは元のルールがそのまま優先されるので不変。
---------------------------------------------------------- */
-.selection-card {
-    background: transparent;
-    border-color: #c9dff0;   /* slightly stronger outline so options stay visible on the blue bg */
-}
-
-.gender-option-btn {
-    background: transparent;
-    border-color: #c9dff0;
-}
-
-/* ---------------------------------------------------------
-   FIX 6) 背景との一体化を全体へ + ホバー時は白背景:
-   ① サンクスページの白い大枠カード・情報カードも背景と一体化
-   ② Step4/5 の入力欄（都道府県・生年月日・名前・メール・電話）も
-      透明ベース＋枠線に統一
-   ③ ホバー時（および入力欄はフォーカス時）は背景を白にして
-      「操作できる」ことをはっきり示す
-   選択済みカードのオレンジ表示は :not(.selected) で保護。
---------------------------------------------------------- */
-
-/* ① Thank-you page: blend cards with the FV background */
-.thanks-viewport-card {
-    background-color: transparent;
-    box-shadow: none;
-}
-
-.thanks-info-card {
-    background: transparent;
-    border-color: #c9dff0;
-    box-shadow: none;
-}
-
-/* ② Inputs / selects: transparent base with the same outline */
-.custom-select-ui,
-.custom-input-ui {
-    background-color: transparent;
-    border-color: #c9dff0;
-}
-
-/* ③ White background on hover (and focus for typing fields) */
 .selection-card:not(.selected):hover {
     background-color: #ffffff;
 }
@@ -1545,170 +858,72 @@
     background-color: #ffffff;
 }
 
-.custom-select-ui:hover,
-.custom-input-ui:hover,
-.custom-select-ui:focus,
-.custom-input-ui:focus {
+.custom-select-ui:hover, .custom-input-ui:hover, .custom-select-ui:focus, .custom-input-ui:focus {
     background-color: #ffffff;
 }
 
-/* ---------------------------------------------------------
-   FIX 7) Background image behind the whole site (FINAL):
-   ホームページ・診断フォーム・サンクスページすべてで同じ
-   背景画像を全画面（100vw/100vh, fixed）で表示。
-   ・html の scrollbar-gutter でカードの左右ズレを防止
-   ・html の背景色でリロード時の白フラッシュを防止
-   ・body は透明にして背景レイヤーを見せる（これが必須）
---------------------------------------------------------- */
-html {
-    background-color: #0a1428;            /* paints instantly — no white flash on reload */
-    overflow-y: scroll;                   /* scrollbar track always present — no shifting */
-    scrollbar-color: rgba(255,255,255,0.35) #0a1428;  /* Firefox: dark scrollbar */
-}
-
-/* Chrome / Edge / Safari: dark scrollbar that blends with the backdrop */
 html::-webkit-scrollbar {
     width: 12px;
-}
-html::-webkit-scrollbar-track {
-    background: #0a1428;
-}
-html::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.28);
-    border-radius: 6px;
-    border: 3px solid #0a1428;
 }
 
 html, body {
     overflow-x: hidden;
 }
 
-body {
-    position: relative;
-    background-color: transparent;        /* IMPORTANT: lets #siteBgLayer show through */
-}
-
-#siteBgLayer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;                          /* full window incl. scrollbar/gutter areas */
-    height: 100vh;
-    z-index: -1;
-    background-color: #0a1428;             /* fallback color while the image loads */
-    background-image: linear-gradient(rgba(10, 20, 40, 0.55), rgba(10, 20, 40, 0.55)), url('images/form-bg.png');
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-}
-
-#diagnosticWizardView {
-    min-height: calc(100dvh - 64px);       /* dvh: stable when mobile address bar shows/hides */
-}
-
-/* =========================================================
-   RESPONSIVE POLISH LAYER (appended only — nothing above changed)
-   Goal: every element scales smoothly and fluidly from 320px
-   phones up to desktop. Every clamp() maximum equals the
-   original desktop value, so at full width the design renders
-   pixel-identical to before — it now simply glides down in
-   size instead of jumping at breakpoints or overflowing.
-   ========================================================= */
-
-/* ---------------------------------------------------------
-   R0) Global guards — no element can ever overflow the screen
---------------------------------------------------------- */
-html {
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-}
-
-img,
-svg,
-video {
+img, svg, video {
     max-width: 100%;
     height: auto;
 }
 
-input,
-select,
-button {
+input, select, button {
     max-width: 100%;
 }
 
-a,
-button,
-input,
-select,
-.selection-card,
-.gender-option-btn,
-.checkbox-container-row {
-    touch-action: manipulation;   /* removes 300ms double-tap zoom delay on mobile */
+a, button, input, select, .selection-card, .gender-option-btn, .checkbox-container-row {
+    touch-action: manipulation;
 }
 
-.page-container {
-    min-height: 100dvh;           /* stable height when the mobile URL bar collapses */
-}
-
-#siteBgLayer {
-    height: 100dvh;               /* backdrop always covers the real visible viewport */
-}
-
-/* Accessibility floor: keyboard users get a visible focus ring
-   (original design removed outlines — restored only for :focus-visible,
-   so mouse/touch appearance is 100% unchanged) */
-.btn-cta-diagnostic:focus-visible,
-.btn-cta-line:focus-visible,
-.btn-nav-back:focus-visible,
-.btn-nav-next:focus-visible,
-.btn-thanks-line:focus-visible,
-.btn-thanks-phone-call:focus-visible,
-.btn-line-apply:focus-visible,
-.modal-btn-line:focus-visible,
-.modal-btn-continue:focus-visible,
-.modal-close-x:focus-visible,
-.util-btn-phone:focus-visible,
-.util-btn-line:focus-visible,
-.custom-select-ui:focus-visible,
-.custom-input-ui:focus-visible {
+.btn-cta-diagnostic:focus-visible, .btn-cta-line:focus-visible, .btn-nav-back:focus-visible, .btn-nav-next:focus-visible, .btn-thanks-line:focus-visible, .btn-thanks-phone-call:focus-visible, .btn-line-apply:focus-visible, .modal-btn-line:focus-visible, .modal-btn-continue:focus-visible, .modal-close-x:focus-visible, .util-btn-phone:focus-visible, .util-btn-line:focus-visible, .custom-select-ui:focus-visible, .custom-input-ui:focus-visible {
     outline: 3px solid #284DB4;
     outline-offset: 2px;
 }
 
-/* Users with reduced-motion enabled get an instant, calm UI */
 @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+    *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
     }
+
     .ticker-track {
-        animation: none;
+    animation: none;
     }
 }
 
-/* ---------------------------------------------------------
-   R1) Header — logo + both pill buttons scale fluidly,
-   never wrap, never collide, from 320px up
---------------------------------------------------------- */
 .site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    height: 64px;
     padding: 6px clamp(6px, 2.4vw, 10px);
     gap: 6px;
 }
 
 .logo-image {
+    width: auto;
+    object-fit: contain;
     height: clamp(36px, 11vw, 48px);
 }
 
 .header-utils {
+    display: flex;
+    align-items: center;
     gap: clamp(4px, 1.6vw, 8px);
     flex-shrink: 0;
 }
 
-.util-btn-phone,
-.util-btn-line {
+.util-btn-phone, .util-btn-line {
     font-size: clamp(11px, 3.4vw, 14px);
     padding: 6px clamp(7px, 2.6vw, 12px);
     height: clamp(32px, 9.6vw, 38px);
@@ -1716,32 +931,62 @@ select,
 }
 
 .header-icon-graphic {
+    width: auto;
+    object-fit: contain;
+    display: inline-block;
     height: clamp(14px, 4.4vw, 20px);
 }
 
-/* ---------------------------------------------------------
-   R2) Ticker — fluid text + vertical rhythm
---------------------------------------------------------- */
 .alert-ticker {
+    background-color: #cc0000;
+    color: #ffffff;
+    font-weight: 700;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
     font-size: clamp(12px, 3.6vw, 14px);
     padding: clamp(14px, 4.2vw, 20px) 0;
 }
 
-/* ---------------------------------------------------------
-   R3) Landing CTAs — smooth size glide instead of one fixed size
---------------------------------------------------------- */
-.cta-action-sheet {
-    padding: clamp(20px, 6vw, 30px) clamp(14px, 5vw, 24px) clamp(28px, 8.4vw, 40px) clamp(14px, 5vw, 24px);
-    gap: clamp(14px, 4.2vw, 20px);
-}
-
 .btn-cta-diagnostic {
+    width: 100%;
+    max-width: 360px;
+    background: #ffffff;
+    border: 3px solid #D30001;
+    color: #D30001;
+    border-radius: 40px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    outline: none;
+    box-shadow: 0 6px 0px #D30001, 0 8px 12px rgba(0,0,0,0.15);
+    transition: all 0.05s ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
     font-size: clamp(17px, 5.4vw, 22px);
     padding: clamp(13px, 3.9vw, 16px) 8px;
     min-height: 48px;
 }
 
 .btn-cta-line {
+    width: 100%;
+    max-width: 360px;
+    background: #3FDA40;
+    color: #ffffff;
+    border: 3px solid #02BD03;
+    border-radius: 40px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    box-shadow: 0 6px 0px #02BD03, 0 8px 12px rgba(0,0,0,0.15);
+    transition: all 0.05s ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
     font-size: clamp(14px, 4.4vw, 18px);
     gap: clamp(12px, 6.4vw, 30px);
     padding: clamp(13px, 3.9vw, 16px) 8px;
@@ -1749,174 +994,183 @@ select,
 }
 
 .cta-line-icon-img {
+    width: auto;
+    object-fit: contain;
+    display: block;
     height: clamp(28px, 8.6vw, 40px);
 }
 
-/* ---------------------------------------------------------
-   R4) Wizard shell — fluid padding, safe-area aware bottom
-   space so the footer bar never covers the last field on
-   notched iPhones / gesture-bar Androids
---------------------------------------------------------- */
-#diagnosticWizardView {
-    padding: clamp(14px, 4.2vw, 20px)
-             clamp(12px, 4.2vw, 20px)
-             calc(100px + env(safe-area-inset-bottom, 0px))
-             clamp(12px, 4.2vw, 20px);
-}
-
 .meta-status-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
     padding: 0 clamp(4px, 2vw, 10px);
     gap: 8px;
 }
 
-.meta-tag-red,
-.meta-counter {
+.meta-tag-red, .meta-counter {
     font-size: clamp(11px, 3.4vw, 13px);
     white-space: nowrap;
 }
 
 .step-badge-pill {
+    background-color: #fff200;
+    color: #1a237e;
+    font-weight: 900;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: relative;
     font-size: clamp(12px, 3.6vw, 14px);
     padding: 8px clamp(26px, 9.4vw, 45px);
 }
 
 .question-title {
+    text-align: center;
+    font-weight: 700;
+    color: #333333;
+    line-height: 1.6;
     font-size: clamp(13px, 4vw, 15px);
     margin-bottom: clamp(20px, 6.2vw, 30px);
     padding: 0 4px;
 }
 
-/* ---------------------------------------------------------
-   R5) Selection cards / gender tabs — fluid padding + text,
-   radio circles scale, tap targets stay comfortable
---------------------------------------------------------- */
-.selection-card {
-    padding: clamp(11px, 3.4vw, 14px) clamp(13px, 4.2vw, 20px);
-    gap: 10px;
-    min-height: 48px;
-}
-
 .card-main-txt {
+    font-weight: 700;
+    color: #333333;
     font-size: clamp(13px, 4vw, 15px);
 }
 
 .card-sub-txt {
+    color: #888888;
+    margin-top: 3px;
+    font-weight: 400;
     font-size: clamp(10px, 3vw, 11px);
 }
 
 .card-radio-circle {
+    border: 1px solid #ff6f43;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: clamp(18px, 5vw, 20px);
     height: clamp(18px, 5vw, 20px);
 }
 
-.gender-option-btn {
-    padding: clamp(10px, 3.2vw, 12px);
-    font-size: clamp(13px, 3.8vw, 14px);
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* ---------------------------------------------------------
-   R6) Form fields — fluid sizing; dropdown arrow always
-   vertically centred no matter the control height
---------------------------------------------------------- */
 .form-label {
+    font-weight: 700;
+    color: #333333;
+    margin-bottom: 8px;
+    display: block;
     font-size: clamp(12px, 3.6vw, 13px);
 }
 
 .form-hint-aside {
+    float: right;
+    color: #999999;
+    font-weight: 400;
+    margin-top: 3px;
     font-size: clamp(9px, 2.8vw, 10px);
     max-width: 58%;
     text-align: right;
 }
 
-.custom-select-ui,
-.custom-input-ui {
-    padding: clamp(11px, 3.4vw, 14px) clamp(12px, 3.6vw, 16px);
-    min-height: 44px;
-}
-
 .select-wrapper::after {
-    top: calc(50% - 6px);         /* arrow tracks the control's centre at any size */
+    content: "＞";
+    transform: rotate(90deg);
+    font-size: 10px;
+    color: #cc0000;
+    position: absolute;
+    right: 20px;
+    pointer-events: none;
+    top: calc(50% - 6px);
 }
 
 .birthday-triple-row {
+    display: flex;
+    width: 100%;
     gap: clamp(5px, 1.8vw, 8px);
 }
 
 .checkbox-container-row {
-    min-height: 44px;             /* easy thumb target */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    min-height: 44px;
 }
 
 .checkbox-txt-lbl {
+    font-weight: 700;
+    color: #cc0000;
     font-size: clamp(11px, 3.4vw, 12px);
 }
 
-/* 16px inputs on phones stop iOS Safari's automatic zoom-in
-   when a field is focused (the #1 cause of "jumpy" mobile forms) */
 @media screen and (max-width: 480px) {
-    .custom-select-ui,
-    .custom-input-ui {
-        font-size: 16px;
+    .custom-select-ui, .custom-input-ui {
+    font-size: 16px;
     }
 
-    /* Year / Month / Day: three selects share one narrow row —
-       tighten inner padding + arrow so values never get clipped */
     .birthday-triple-row .custom-select-ui {
-        padding-left: 10px;
-        padding-right: 24px;
+    padding-left: 10px;
+    padding-right: 24px;
     }
 
     .birthday-triple-row .select-wrapper::after {
-        right: 10px;
+    right: 10px;
     }
 }
 
-/* ---------------------------------------------------------
-   R7) Wizard footer + mascot — safe-area aware, fluid buttons
---------------------------------------------------------- */
-.wizard-footer-nav {
-    height: auto;
-    min-height: 75px;
-    padding: 12px clamp(12px, 4.2vw, 20px) calc(12px + env(safe-area-inset-bottom, 0px)) clamp(12px, 4.2vw, 20px);
-    gap: 8px;
-}
-
-.btn-nav-back,
-.btn-nav-next {
+.btn-nav-back, .btn-nav-next {
     font-size: clamp(13px, 3.8vw, 14px);
     min-height: 44px;
 }
 
 .floating-avatar-box {
+    position: absolute;
+    right: 10px;
+    z-index: 1;
+    pointer-events: none;
     width: clamp(46px, 14vw, 60px);
     bottom: calc(80px + env(safe-area-inset-bottom, 0px));
 }
 
-/* ---------------------------------------------------------
-   R8) Thank-you page — everything fluid; phone-number row
-   can wrap gracefully instead of overflowing on 320px, and
-   the blue ribbon badge wraps instead of spilling past the card
---------------------------------------------------------- */
-#thankYouView {
-    padding: clamp(24px, 8vw, 40px) clamp(12px, 4.2vw, 20px) clamp(40px, 12.4vw, 60px) clamp(12px, 4.2vw, 20px);
-}
-
 .thanks-viewport-card {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 16px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: transparent;
+    box-shadow: none;
     padding: clamp(24px, 7.2vw, 35px) clamp(10px, 4.2vw, 20px) clamp(30px, 9.4vw, 45px) clamp(10px, 4.2vw, 20px);
 }
 
 .thanks-headline {
+    font-weight: 900;
+    color: #111111;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    text-align: center;
     font-size: clamp(15px, 4.8vw, 18px);
 }
 
-.thanks-info-card {
-    padding: 20px clamp(10px, 3.2vw, 15px) 15px clamp(10px, 3.2vw, 15px);
-}
-
 .card-badge-blue {
+    background-color: #2b54c5;
+    color: #ffffff;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
     max-width: calc(100% - 16px);
     white-space: normal;
     text-align: center;
@@ -1924,52 +1178,81 @@ select,
 }
 
 .card-phone-flex {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 5px;
     flex-wrap: wrap;
     justify-content: center;
     row-gap: 6px;
 }
 
 .phone-number-block {
+    text-align: left;
+    flex: 1;
     min-width: 0;
 }
 
 .large-phone-num {
-    font-size: clamp(19px, 6.6vw, 30px);   /* smooth glide, replaces the 30px→22px jump */
+    font-weight: 900;
+    color: #284DB4;
+    border-bottom: 3px solid #fff200;
+    display: inline-block;
+    line-height: 1.3;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+    font-size: clamp(19px, 6.6vw, 30px);
     white-space: nowrap;
 }
 
 .time-guarantee-txt {
+    font-weight: 700;
+    color: #333333;
+    margin-top: 2px;
     font-size: clamp(11px, 3.4vw, 12px);
 }
 
 .time-guarantee-txt .red-bold {
+    color: #cc0000;
+    font-weight: 900;
     font-size: clamp(16px, 5vw, 20px);
 }
 
 .card-illustration-img {
+    height: auto;
     width: clamp(38px, 11.6vw, 52px);
 }
 
 .card-phone-status-img {
+    height: auto;
     width: clamp(26px, 7.6vw, 34px);
 }
 
 .benefit-bullet-list li {
+    font-weight: 700;
+    color: #00b027;
+    position: relative;
+    padding-left: 16px;
+    text-align: left;
     font-size: clamp(11px, 3.4vw, 12px);
 }
 
 .line-caption-hint {
+    color: #a0a0a0;
+    text-align: center;
+    margin: 0 0 10px 0;
     font-size: clamp(10px, 3.1vw, 11px);
 }
 
 .urgent-caption-lbl {
+    color: #4a4a4a;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    text-align: center;
     font-size: clamp(13px, 4.2vw, 15px);
 }
 
-/* Smooth continuous version of the earlier stepwise (480/360)
-   thank-you button shrink — one fluid curve, no visual jumps */
-.btn-thanks-line,
-.btn-thanks-phone-call {
+.btn-thanks-line, .btn-thanks-phone-call {
     font-size: clamp(13px, 4.2vw, 18px);
     padding: clamp(10px, 3.4vw, 16px) clamp(10px, 4vw, 24px);
     gap: clamp(6px, 2.4vw, 15px);
@@ -1977,25 +1260,45 @@ select,
 }
 
 .btn-thanks-line img {
+    width: auto;
+    object-fit: contain;
+    display: block;
     height: clamp(22px, 7vw, 40px);
     flex-shrink: 0;
 }
 
 .btn-thanks-phone-call img {
+    width: auto;
+    object-fit: contain;
+    display: block;
     height: clamp(14px, 4.4vw, 20px);
     flex-shrink: 0;
 }
 
-/* ---------------------------------------------------------
-   R9) Exit-intent modal — never taller than the screen
-   (scrolls inside itself on short/landscape phones),
-   fluid header + bullet text
---------------------------------------------------------- */
 .modal-overlay-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
     padding: clamp(10px, 3.2vw, 15px);
 }
 
 .modal-card-box {
+    background-color: #DDEEFF;
+    width: 100%;
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    animation: modalPopIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.15) forwards;
     max-width: min(390px, 100%);
     max-height: calc(100dvh - 24px);
     overflow-y: auto;
@@ -2003,191 +1306,151 @@ select,
 }
 
 .modal-header-text h2 {
+    font-weight: 900;
+    color: #f7b731;
+    margin: 0 0 6px 0;
     font-size: clamp(16px, 5vw, 19px);
 }
 
 .modal-header-text p {
+    font-weight: bold;
+    line-height: 1.4;
+    margin: 0;
     font-size: clamp(11px, 3.4vw, 12.5px);
 }
 
 .speech-bubble-tag {
+    position: absolute;
+    color: #1a42a7;
+    font-family: "Noto Sans JP", sans-serif;
+    font-weight: 900;
     font-size: clamp(13px, 4.2vw, 16px);
 }
 
 .benefit-bullet-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: transparent;
+    margin-bottom: 14px;
+    box-sizing: border-box;
     padding: 0 clamp(14px, 5vw, 24px) 10px clamp(14px, 5vw, 24px);
 }
 
 .benefit-bullet-row p {
+    font-weight: bold;
+    color: #25448c;
+    margin: 0;
     font-size: clamp(12px, 3.6vw, 13px);
 }
 
-/* ---------------------------------------------------------
-   R10) Edge cases
---------------------------------------------------------- */
-
-/* Ultra-narrow devices (Galaxy Fold cover screen ~280–330px) */
 @media screen and (max-width: 330px) {
-    .util-btn-phone,
-    .util-btn-line {
-        font-size: 10.5px;
-        padding: 5px 7px;
-        gap: 3px;
+    .util-btn-phone, .util-btn-line {
+    font-size: 10.5px;
+    padding: 5px 7px;
+    gap: 3px;
     }
 
     .logo-image {
-        height: 34px;
+    height: 34px;
     }
 
     .step-badge-pill {
-        padding: 8px 22px;
+    padding: 8px 22px;
     }
 
     .gender-split-row {
-        gap: 8px;
+    gap: 8px;
     }
 
     .form-hint-aside {
-        float: none;
-        display: block;
-        text-align: left;
-        max-width: 100%;
+    float: none;
+    display: block;
+    text-align: left;
+    max-width: 100%;
     }
 }
 
-/* Short landscape phones: give the form room, hide floaters
-   that would overlap the inputs */
 @media screen and (max-height: 480px) and (orientation: landscape) {
     .floating-avatar-box {
-        display: none;
+    display: none;
     }
 
     .modal-avatar-wrapper {
-        display: none;
+    display: none;
     }
 
     .modal-header-blue {
-        padding-bottom: 18px;
+    padding-bottom: 18px;
     }
 }
 
-/* Tablets / desktop (≥481px): every clamp() above resolves to
-   its original desktop value — the centred 480px column renders
-   exactly as originally designed. Nothing to override here. */
-
-/* =========================================================
-   BUBBLE FIX (per request): the ＼カンタン応募はこちらから／
-   bubble must look IDENTICAL on every screen — hanging over
-   the bottom edge of the hero image exactly like on desktop
-   (Image 1). This cancels the earlier mobile relocation
-   (FIX 1) that pushed it below the hero and put a white pill
-   behind the text (Image 2), and also removes the abrupt
-   20px→12px text jump at 375px. The bubble, its text, and
-   the inner offsets now all scale proportionally together,
-   so it is always the exact same picture — just smaller.
-   ========================================================= */
 @media screen and (max-width: 480px) {
-
-    /* Back to the desktop behaviour: overlap the hero bottom */
     .speech-bubble-overlay {
-        position: absolute;
-        bottom: -8%;
-        left: 50%;
-        transform: translateX(-50%);
-        margin: 0;
-        z-index: 5;
+    position: absolute;
+    bottom: -8%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    z-index: 5;
     }
 
-    /* Remove the white pill that was added for the relocated
-       version — plain blue text straight on the yellow bubble */
     .speech-bubble-text {
-        display: block;
-        background: transparent;
-        border-radius: 0;
-        padding: 0;
+    z-index: 3;
+    display: block;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
     }
 
-    /* Restore the desktop clearance below the hanging bubble */
     .cta-action-sheet {
-        margin-top: 50px;
+    margin-top: 50px;
     }
 }
 
-/* Text scales in lockstep with the bubble image (78% of the
-   column, capped at 340px), keeping the text-to-bubble
-   proportion constant on every device. At ≥436px this resolves
-   to the original 20px / 12px / 4px desktop values exactly. */
-.speech-bubble-text {
-    font-size: clamp(11px, 4.6vw, 20px);
-    margin-left: clamp(7px, 2.75vw, 12px);
-    margin-top: clamp(2px, 0.92vw, 4px);
-}
-
-/* =========================================================
-   SELECT PICKER FIX (desktop only, progressive enhancement):
-   The floating options list of a native <select> is drawn by
-   the OS and cannot be positioned/sized by normal CSS — with
-   31 days in a short desktop window it spills past the window
-   edge. Modern Chromium supports "customizable select"
-   (appearance: base-select), which turns the picker into an
-   in-page popover that CSS CAN cap and scroll. Scoped to
-   mouse/desktop devices only — phones keep their native
-   bottom-sheet / wheel pickers exactly as before, and any
-   browser without support silently ignores all of this.
-   ========================================================= */
 @supports selector(::picker(select)) {
     @media (hover: hover) and (pointer: fine) {
-
-        .custom-select-ui,
-        .custom-select-ui::picker(select) {
-            appearance: base-select;
+        .custom-select-ui, .custom-select-ui::picker(select) {
+    appearance: base-select;
         }
 
-        /* The dropdown list: never taller than the viewport,
-           scrolls inside itself, styled to match the form */
         .custom-select-ui::picker(select) {
-            max-height: min(45vh, 340px);
-            overflow-y: auto;
-            background: #ffffff;
-            border: 1px solid #c9dff0;
-            border-radius: 14px;
-            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
-            padding: 4px;
-            margin-top: 4px;
+    max-height: min(45vh, 340px);
+    overflow-y: auto;
+    background: #ffffff;
+    border: 1px solid #c9dff0;
+    border-radius: 14px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+    padding: 4px;
+    margin-top: 4px;
         }
 
         .custom-select-ui option {
-            padding: 10px 14px;
-            border-radius: 10px;
-            font-size: 14px;
-            color: #333333;
-            cursor: pointer;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #333333;
+    cursor: pointer;
         }
 
-        .custom-select-ui option:hover,
-        .custom-select-ui option:focus {
-            background: #fffaf7;
+        .custom-select-ui option:hover, .custom-select-ui option:focus {
+    background: #fffaf7;
         }
 
         .custom-select-ui option:checked {
-            background: #eaf1ff;
-            color: #284DB4;
-            font-weight: 700;
+    background: #eaf1ff;
+    color: #284DB4;
+    font-weight: 700;
         }
     }
 }
 
-/* =========================================================
-   SCROLLBAR FIX (per request): the page scrollbar was styled
-   dark navy (FIX 7) to blend with the dark backdrop image.
-   Now switched to WHITE: white track, with a soft light-blue
-   thumb from the site's own palette so the handle stays
-   visible (a pure-white thumb on a white track would be
-   invisible and unusable). Covers Firefox + Chrome/Edge/
-   Safari/Opera.
-   ========================================================= */
 html {
-    scrollbar-color: #c9dff0 #ffffff;   /* Firefox: thumb, track */
+    background-color: #0a1428;
+    overflow-y: scroll;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scrollbar-color: #c9dff0 #ffffff;
 }
 
 html::-webkit-scrollbar-track {
@@ -2201,234 +1464,75 @@ html::-webkit-scrollbar-thumb {
 }
 
 html::-webkit-scrollbar-thumb:hover {
-    background: #a9c9e6;                 /* slightly deeper blue while dragging */
+    background: #a9c9e6;
 }
 
-/* =========================================================
-   POPUP BUTTONS RESPONSIVE (per request): the exit-intent
-   modal's buttons were the last ones still using fixed sizes
-   and jumps (LINE button capped at 200px on mobile with fixed
-   12px text, continue button at a different 80% width, so the
-   two never lined up). Now both buttons share one fluid width,
-   all text / icons / padding glide with clamp(), and tap
-   targets meet the 48px comfort floor — consistent with every
-   other button already made fluid in the responsive layer.
-   ========================================================= */
-.btn-line-apply,
-.modal-btn-line,
-.modal-btn-continue {
+.btn-line-apply, .modal-btn-line, .modal-btn-continue {
     width: min(88%, 320px);
-    max-width: none;                 /* cancels the old 320px / 200px caps so both buttons align */
+    max-width: none;
     min-height: 48px;
     padding: clamp(12px, 3.6vw, 16px) clamp(12px, 4.2vw, 20px);
     gap: clamp(10px, 3.4vw, 16px);
 }
 
-.modal-btn-line,
-.modal-btn-continue {
-    font-size: clamp(13px, 3.8vw, 15px);   /* was browser-default with no defined size */
-}
-
-.btn-line-apply__text {
-    font-size: clamp(12px, 3.8vw, 18px);   /* smooth curve, replaces the fixed 18px→12px jump at 480px */
-    line-height: 1.25;
+.modal-btn-line, .modal-btn-continue {
+    font-size: clamp(13px, 3.8vw, 15px);
 }
 
 .btn-line-apply__icon {
+    object-fit: contain;
+    flex-shrink: 0;
     width: clamp(28px, 8.6vw, 38px);
     height: clamp(28px, 8.6vw, 38px);
 }
 
-/* Close (×) button: scales up slightly on touch screens for an
-   easier tap while keeping the same visual style */
 .modal-close-x {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    color: #284DB4;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
     width: clamp(26px, 8vw, 30px);
     height: clamp(26px, 8vw, 30px);
     font-size: clamp(16px, 5vw, 18px);
 }
 
-/* =========================================================
-   ONE-LINE LINE BUTTON (per request): the popup's LINE button
-   was stacking「今すぐLINEで / 応募する」into two rows on
-   mobile (flex-direction: column in the old ≤480px rule).
-   Now the text always stays on a single line, with the font
-   size reduced and fluid so the full phrase fits inside the
-   button at every screen width down to 320px.
-   ========================================================= */
 .btn-line-apply__text {
-    flex-direction: row;                    /* cancels the two-line stack */
+    display: flex;
+    gap: 4px;
+    line-height: 1.25;
+    flex-direction: row;
     align-items: center;
-    white-space: nowrap;                    /* never allowed to wrap */
-    font-size: clamp(11px, 4vw, 16px);      /* reduced from 18px so one line always fits */
+    white-space: nowrap;
+    font-size: clamp(11px, 4vw, 16px);
 }
 
-/* =========================================================
-   DOUBLE ARROW FIX: the customizable-select feature added in
-   the SELECT PICKER FIX ships with its own built-in ▼ icon
-   (::picker-icon). The design already draws its own red arrow
-   via .select-wrapper::after, so both were showing at once.
-   The built-in icon is hidden; the original red arrow stays.
-   ========================================================= */
 @supports selector(::picker(select)) {
     @media (hover: hover) and (pointer: fine) {
         .custom-select-ui::picker-icon {
-            display: none;
+    display: none;
         }
     }
 }
 
-/* =========================================================
-   CLIENT FIX 8) FV background retained INSIDE the smartphone
-   column on every screen:
-   スマホでは中央480pxカラムしか見えないため、カラム内が
-   不透明な #e6f5ff だと Step1〜5 で FV（工場・人物）の
-   世界観が完全に消えて見えていた。修正方針（クライアント案
-   通り）：カラムの塗りを「半透明のライトブルーのベール」に
-   変更し、既に全画面固定表示している FV 背景（#siteBgLayer）
-   をカラムの内側にもうっすら透けさせる。フォームの選択肢・
-   入力欄は半透明の白カードに載せて可読性を確保。
-   NOTE: #siteBgLayer は position:fixed の要素なので、
-   background-attachment:fixed が壊れている iOS Safari でも
-   問題なく動く（スマホ実機で必ず透けて見える）。
-   ========================================================= */
-
-/* ONE tunable veil for the whole column. The fixed FV backdrop
-   now shows through it faintly — on phones too, not just on the
-   PC side rails. TUNING KNOB: raise 0.78 toward 1 for a fainter
-   image, lower it for a stronger image. */
-
-/* These per-view opaque fills were what hid the backdrop inside
-   the column — now transparent so the single veil above governs
-   every screen (FV → Step 1–5 → thank-you) identically */
-#diagnosticWizardView {
-    background: transparent;
-}
-
-#thankYouView {
-    background-color: transparent;
-}
-
-.cta-action-sheet {
-    background-color: transparent;
-}
-
-/* The 戻る/次へ bar overlays scrolling content, so it keeps its
-   own slightly stronger frosted veil for guaranteed readability */
-.wizard-footer-nav {
-    background: rgba(230, 245, 255, 0.9);
-    -webkit-backdrop-filter: blur(6px);
-    backdrop-filter: blur(6px);
-}
-
-/* Readability layer (client plan): options and inputs sit on
-   soft translucent-white cards so the photo never fights the
-   text. The orange selected state and the solid-white hover /
-   focus states from the earlier fixes still win automatically
-   (they have higher CSS specificity), so behaviour is unchanged. */
-.selection-card {
-    background: rgba(255, 255, 255, 0.85);
-}
-
-.gender-option-btn {
-    background: rgba(255, 255, 255, 0.85);
-}
-
-.custom-select-ui,
-.custom-input-ui {
-    background-color: rgba(255, 255, 255, 0.85);
-}
-
-/* Thank-you page cards get the same translucent-white treatment */
-.thanks-info-card {
-    background: rgba(255, 255, 255, 0.8);
-}
-
-/* =========================================================
-   CLIENT FIX 8b) COLOR RESTORED: the see-through veil mixed
-   with the DARK navy overlay of #siteBgLayer (and its dark
-   fallback color when the image hasn't loaded), producing a
-   muddy gray-blue instead of the original pale light blue.
-   New approach: the column paints its OWN background — the
-   exact previous #e6f5ff as the base color, with the FV image
-   blended directly on top of it under a light #e6f5ff veil.
-   Result: the column reads as the previous color again, the
-   factory/character atmosphere still shows through faintly on
-   smartphones, and if the image ever fails to load you get
-   precisely the old solid #e6f5ff — never gray.
-   TUNING KNOB: raise 0.88 toward 1 for a fainter image,
-   lower it for a stronger image.
-   ========================================================= */
-.page-container {
-    background-image:
-        linear-gradient(rgba(230, 245, 255, 0.88), rgba(230, 245, 255, 0.88)),
-        url('images/form-bg.png');
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-}
-
-/* =========================================================
-   FIX 8 REVERT (per request): no FV image behind the form.
-   Everything inside the column goes back to EXACTLY the state
-   before FIX 8 — solid #e6f5ff surfaces, transparent outlined
-   cards/inputs (FIX 5/6 look), plain footer bar. The dark FV
-   backdrop on the PC side rails (FIX 7) stays as it was.
-   ========================================================= */
-.page-container {
-    background-image: none;      /* removes the blended FV image from the column */
-   
-}
-
-#diagnosticWizardView {
-    background: #e6f5ff;
-}
-
-#thankYouView {
-    background-color: #e6f5ff;
-}
-
-.cta-action-sheet {
-    background-color: #e6f5ff;
-}
-
-.wizard-footer-nav {
-    background: #e6f5ff;
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-}
-
-/* Cards and inputs back to the approved transparent-outline
-   style (selected orange + hover/focus white states untouched) */
-.selection-card {
-    background: transparent;
-}
-
-.gender-option-btn {
-    background: transparent;
-}
-
-.custom-select-ui,
-.custom-input-ui {
-    background-color: transparent;
-}
-
-.thanks-info-card {
-    background: transparent;
-}
-
-/* =========================================================
-   FIX 9a) 「カンタン応募はこちらから」の横ライン調整:
-   The text box covers the whole bubble and flex-centres itself.
-   The bubble artwork sits slightly right-and-down of its image
-   box's true centre (that's why the original design nudged the
-   text +12px/+4px), so the same nudge is applied here as
-   PERCENTAGES of the bubble's own size — meaning the text stays
-   dead-centre of the visible yellow bubble at every screen
-   width, from 320px phones to desktop.
-   TUNING KNOBS: translate(X%, Y%) — X moves right, Y moves down
-   (3.5% ≈ the original 12px at full size, 4% ≈ the original 4px).
-   ========================================================= */
 .speech-bubble-text {
+    color: #284DB4;
+    font-family: "Noto Sans JP", sans-serif;
+    font-weight: 600;
+    white-space: nowrap;
+    text-align: center;
+    pointer-events: none;
+    font-size: clamp(11px, 4.6vw, 20px);
+    margin-left: clamp(7px, 2.75vw, 12px);
+    margin-top: clamp(2px, 0.92vw, 4px);
     position: absolute;
     top: 0;
     left: 0;
@@ -2441,221 +1545,250 @@ html::-webkit-scrollbar-thumb:hover {
     transform: translate(3.5%, 4%);
 }
 
-/* =========================================================
-   FIX 9b) CTA visible inside the FV on small screens
-   (iPhone SE 375×667 and similar):
-   On short phones the hero pushed the red CTA below the fold.
-   On short viewports the hero is height-capped (and cropped
-   with object-fit: cover from the top, never distorted), the
-   ticker and CTA-sheet spacing tighten, so the「簡単1分！適性
-   診断を始める」button is on screen without scrolling.
-   Desktop and tall phones are untouched.
-   ========================================================= */
 @media screen and (max-width: 480px) and (max-height: 750px) {
     .alert-ticker {
-        padding: 10px 0;
+    padding: 10px 0;
     }
 
     .hero-main-render {
-        width: 100%;
-        max-height: max(220px, calc(100dvh - 300px));
-        object-fit: cover;
-        object-position: center top;
+    width: 100%;
+    max-height: max(220px, calc(100dvh - 300px));
+    object-fit: cover;
+    object-position: center top;
     }
 
     .cta-action-sheet {
-        margin-top: 30px;      /* still clears the hanging bubble */
-        padding-top: 16px;
+    margin-top: 30px;
+    padding-top: 16px;
     }
 }
 
-
-
-/* =========================================================
-   FIX 9c) FV atmosphere maintained into the Step screens
-   (client requirement, FINAL — faint version):
-   スマホでは中央カラムしか見えないため、Step画面でFVの
-   工場・人物の世界観が消えていた。カラム自身に FV 画像を
-   薄く合成する（ベール 0.90 = 画像は約10%の強さ）。
-   色味はほぼ従来の #e6f5ff のままで、雰囲気だけが残る。
-   画像が読み込めない場合は従来の単色 #e6f5ff に自動フォール
-   バック。TUNING KNOB: 0.90 を 1 に近づけるほど画像は薄く、
-   下げるほど濃くなる。
-   ========================================================= */
-.page-container {
-    background-image:
-        linear-gradient(rgba(230, 245, 255, 0.90), rgba(230, 245, 255, 0.90)),
-        url('images/form-bg.png');
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-}
-
-/* Per-view opaque fills would hide the image — transparent so
-   the same faint atmosphere carries FV → Step 1–5 → thank-you */
 #diagnosticWizardView {
+    display: none;
+    flex-direction: column;
+    position: relative;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    min-height: calc(100dvh - 64px);
+    padding: clamp(14px, 4.2vw, 20px)
+             clamp(12px, 4.2vw, 20px)
+             calc(100px + env(safe-area-inset-bottom, 0px))
+             clamp(12px, 4.2vw, 20px);
     background: transparent;
 }
 
 #thankYouView {
+    display: none;
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    flex-direction: column;
+    align-items: center;
+    padding: clamp(24px, 8vw, 40px) clamp(12px, 4.2vw, 20px) clamp(40px, 12.4vw, 60px) clamp(12px, 4.2vw, 20px);
     background-color: transparent;
 }
 
 .cta-action-sheet {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: clamp(20px, 6vw, 30px) clamp(14px, 5vw, 24px) clamp(28px, 8.4vw, 40px) clamp(14px, 5vw, 24px);
+    gap: clamp(14px, 4.2vw, 20px);
     background-color: transparent;
 }
 
-/* 戻る/次へ bar overlays scrolling content → its own frosted veil */
 .wizard-footer-nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    border-top: none;
+    height: auto;
+    min-height: 75px;
+    padding: 12px clamp(12px, 4.2vw, 20px) calc(12px + env(safe-area-inset-bottom, 0px)) clamp(12px, 4.2vw, 20px);
+    gap: 8px;
     background: rgba(230, 245, 255, 0.92);
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
 }
 
-/* Readability: options / inputs on soft translucent-white cards
-   so text never fights the faint imagery. Orange selected state
-   and white hover/focus states still win by higher specificity. */
 .selection-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-align: left;
+    position: relative;
+    border-color: #c9dff0;
+    padding: clamp(11px, 3.4vw, 14px) clamp(13px, 4.2vw, 20px);
+    gap: 10px;
+    min-height: 48px;
     background: rgba(255, 255, 255, 0.72);
 }
 
 .gender-option-btn {
+    flex: 1;
+    border: 1px solid #e0e0e0;
+    border-radius: 25px;
+    font-weight: 700;
+    color: #666666;
+    cursor: pointer;
+    text-align: center;
+    border-color: #c9dff0;
+    padding: clamp(10px, 3.2vw, 12px);
+    font-size: clamp(13px, 3.8vw, 14px);
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: rgba(255, 255, 255, 0.72);
 }
 
-.custom-select-ui,
-.custom-input-ui {
+.custom-select-ui, .custom-input-ui {
+    border-color: #c9dff0;
+    padding: clamp(11px, 3.4vw, 14px) clamp(12px, 3.6vw, 16px);
+    min-height: 44px;
     background-color: rgba(255, 255, 255, 0.72);
 }
 
 .thanks-info-card {
+    border-radius: 16px;
+    border: 1px solid #f0f0f0;
+    width: 100%;
+    position: relative;
+    margin-top: 25px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-color: #c9dff0;
+    box-shadow: none;
+    padding: 20px clamp(10px, 3.2vw, 15px) 15px clamp(10px, 3.2vw, 15px);
     background: rgba(255, 255, 255, 0.7);
 }
 
-
-#siteBgLayer{
-
-
-    background:
-        linear-gradient(
+#siteBgLayer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: -1;
+    background-color: #0a1428;
+    background-image: linear-gradient(rgba(10, 20, 40, 0.55), rgba(10, 20, 40, 0.55)), url("images/form-bg.png");
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    height: 100dvh;
+    background: linear-gradient(
             rgba(40, 55, 75, 0.45),
             rgba(40, 55, 75, 0.45)
         ),
         url("images/form-bg.png") center center / cover no-repeat;
 }
 
+@media (max-width:480px) {
+    .page-container {
+    background: #ffffff;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+    border: none;
+    }
+}
 
+.page-container {
+    background-image: linear-gradient(rgba(230, 245, 255, 0.90), rgba(230, 245, 255, 0.90)),
+        url("images/form-bg.png");
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    width: 100%;
+    max-width: 480px;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: rgba(255,255,255,0.78);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 12px 40px rgba(0,0,0,.08);
+    overflow: hidden;
+}
 
+body {
+    align-items: flex-start;
+    position: relative;
+    background-color: transparent;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    min-height: 100dvh;
+    background: transparent;
+}
 
-@media (max-width:480px){
-
-    .page-container{
-        background:#ffffff;
-        backdrop-filter:none;
-        -webkit-backdrop-filter:none;
-        box-shadow:none;
-        border:none;
+@media (max-width:480px) {
+    .hero-graphic-wrapper {
+    position: relative;
+    aspect-ratio: 480 / 620;
+    overflow: visible;
     }
 
-}
-
-
-
-        .page-container{
-    width:100%;
-    max-width:480px;
-    min-height:100dvh;
-
-    display:flex;
-    flex-direction:column;
-    position:relative;
-
-    /* Frosted glass effect */
-    background:rgba(255,255,255,0.78);
-
-    -webkit-backdrop-filter:blur(18px);
-
-
-
-    /* Much lighter shadow */
-    box-shadow:
-        0 12px 40px rgba(0,0,0,.08);
-
-    overflow:hidden;
-}
-
-        body{
-    margin:0;
-    display:flex;
-    justify-content:center;
-    min-height:100dvh;
-
-    background:transparent;
-}
-@media (max-width:480px){
-
-    .hero-graphic-wrapper{
-        position:relative;
-        aspect-ratio: 480 / 620; /* use your desktop hero ratio */
-        overflow:visible;
+    .speech-bubble-overlay {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -38px;
+    width: 78%;
+    z-index: 10;
     }
+}
 
-    .hero-main-render{
-        width:100%;
-        height:100%;
-        object-fit:cover;
-        display:block;
+.hero-graphic-wrapper {
+    width: 100%;
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+}
+
+.hero-main-render {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: none;
+}
+
+.speech-bubble-overlay {
+    width: 78%;
+    max-width: 340px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    bottom: -35px;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+@media (max-width:480px) {
+    .hero-main-render {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: unset;
     }
-
-    .speech-bubble-overlay{
-        position:absolute;
-        left:50%;
-        transform:translateX(-50%);
-        bottom:-38px;
-        width:78%;
-        z-index:10;
-    }
-
 }
-
-        .hero-graphic-wrapper{
-    position:relative;
-    display:block;
-    margin:0;
-    padding:0;
-    line-height:0;
-}
-
-.hero-main-render{
-    display:block;
-    width:100%;
-    height:auto;
-    max-height:none;
-}
-
-.speech-bubble-overlay{
-    position:absolute;
-    left:50%;
-    bottom:-35px;
-    transform:translateX(-50%);
-    z-index:10;
-}
-
-        @media (max-width:480px){
-
-    .hero-main-render{
-        display:block;
-        width:100%;
-        height:auto;
-        max-height:none;
-        object-fit:unset;
-    }
-
-}
-
-
-
-    </style>
+</style>
 </head>
 <body>
 
