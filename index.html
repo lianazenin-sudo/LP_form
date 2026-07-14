@@ -2546,24 +2546,51 @@ html::-webkit-scrollbar-thumb:hover {
     min-height: 100%;
 }
 
-body {
-    background-color: transparent;   /* let html's background show through */
+html, body {
+    background-color: #0a1428;   /* fallback while it loads */
 }
-        html {
-    background-color: #0a1428;
-    background-image: linear-gradient(rgba(10, 20, 40, 0.55), rgba(10, 20, 40, 0.55)),
-                       url('images/form-bg.png');
-    background-position: center top;
-    background-repeat: repeat-y;
-    background-size: min(100vw, 480px) auto;
+
+body {
+    position: relative;
+}
+
+#siteBgLayer {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(100%, 480px);   /* same cap as .page-container, so it's always the same width as the column */
+    height: 100%;               /* stretches to the full page height, however tall the LP is */
+    object-fit: cover;          /* fills that box completely — crops instead of repeating or distorting */
+    object-position: center top;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* dark overlay tint, same as before, now as its own layer since <img> can't take a gradient */
+#siteBgLayer::after {
+    content: '';
+}
+        #siteBgTint {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(100%, 480px);
+    height: 100%;
+    background: rgba(10, 20, 40, 0.55);
+    z-index: -1;
+    pointer-events: none;
 }
 
     </style>
 </head>
 <body>
 
-
-
+    <img src="images/form-bg.png" alt="" id="siteBgLayer">
+    <div id="siteBgTint"></div>
+    ...
+    ...
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PMJSL954"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
