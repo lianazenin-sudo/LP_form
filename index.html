@@ -1822,15 +1822,36 @@ body {
     z-index: 10;
 }
 
-@media (max-width:375px) {
-    .speech-bubble-overlay {
+/* ============ HERO IMAGE + SPEECH BUBBLE — consolidated, no more per-breakpoint overrides ============ */
+
+.hero-graphic-wrapper {
+    width: 100%;
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    overflow: visible;
+}
+
+.hero-main-render {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: none;
+}
+
+.speech-bubble-overlay {
+    width: 78%;
+    max-width: 340px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     left: 50%;
+    bottom: -6%;              /* percentage, not px — scales with the image itself */
     transform: translateX(-50%);
-    bottom: -7%;               /* was -38px, now matches base */
-    width: 78%;
     z-index: 10;
-    }
 }
 </style>
 </head>
