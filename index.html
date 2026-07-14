@@ -2421,6 +2421,130 @@ html::-webkit-scrollbar-thumb:hover {
 .thanks-info-card {
     background: transparent;
 }
+
+/* =========================================================
+   FIX 9a) 「カンタン応募はこちらから」の横ライン調整:
+   The bubble text was positioned with hand-tuned pixel offsets
+   (margin-left/top), so it drifted off the bubble's horizontal
+   centre line at some widths. Now the text box covers the whole
+   bubble and flex-centres itself, with a small upward optical
+   shift to account for the tail at the bubble's bottom — the
+   text sits ON the bubble's line at every screen size.
+   TUNING KNOB: adjust translateY(-7%) to nudge up/down.
+   ========================================================= */
+.speech-bubble-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    transform: translateY(-7%);
+}
+
+/* =========================================================
+   FIX 9b) CTA visible inside the FV on small screens
+   (iPhone SE 375×667 and similar):
+   On short phones the hero pushed the red CTA below the fold.
+   On short viewports the hero is height-capped (and cropped
+   with object-fit: cover from the top, never distorted), the
+   ticker and CTA-sheet spacing tighten, so the「簡単1分！適性
+   診断を始める」button is on screen without scrolling.
+   Desktop and tall phones are untouched.
+   ========================================================= */
+@media screen and (max-width: 480px) and (max-height: 750px) {
+    .alert-ticker {
+        padding: 10px 0;
+    }
+
+    .hero-main-render {
+        width: 100%;
+        max-height: max(220px, calc(100dvh - 300px));
+        object-fit: cover;
+        object-position: center top;
+    }
+
+    .cta-action-sheet {
+        margin-top: 30px;      /* still clears the hanging bubble */
+        padding-top: 16px;
+    }
+}
+
+/* Even shorter screens (older/small Androids, ~≤600px tall) */
+@media screen and (max-width: 480px) and (max-height: 600px) {
+    .hero-main-render {
+        max-height: max(180px, calc(100dvh - 270px));
+    }
+
+    .cta-action-sheet {
+        margin-top: 26px;
+    }
+}
+
+/* =========================================================
+   FIX 9c) FV atmosphere maintained into the Step screens
+   (client requirement, FINAL — faint version):
+   スマホでは中央カラムしか見えないため、Step画面でFVの
+   工場・人物の世界観が消えていた。カラム自身に FV 画像を
+   薄く合成する（ベール 0.90 = 画像は約10%の強さ）。
+   色味はほぼ従来の #e6f5ff のままで、雰囲気だけが残る。
+   画像が読み込めない場合は従来の単色 #e6f5ff に自動フォール
+   バック。TUNING KNOB: 0.90 を 1 に近づけるほど画像は薄く、
+   下げるほど濃くなる。
+   ========================================================= */
+.page-container {
+    background-color: #e6f5ff;   /* base + fallback = previous solid color */
+    background-image:
+        linear-gradient(rgba(230, 245, 255, 0.90), rgba(230, 245, 255, 0.90)),
+        url('images/form-bg.png');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+/* Per-view opaque fills would hide the image — transparent so
+   the same faint atmosphere carries FV → Step 1–5 → thank-you */
+#diagnosticWizardView {
+    background: transparent;
+}
+
+#thankYouView {
+    background-color: transparent;
+}
+
+.cta-action-sheet {
+    background-color: transparent;
+}
+
+/* 戻る/次へ bar overlays scrolling content → its own frosted veil */
+.wizard-footer-nav {
+    background: rgba(230, 245, 255, 0.92);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+/* Readability: options / inputs on soft translucent-white cards
+   so text never fights the faint imagery. Orange selected state
+   and white hover/focus states still win by higher specificity. */
+.selection-card {
+    background: rgba(255, 255, 255, 0.72);
+}
+
+.gender-option-btn {
+    background: rgba(255, 255, 255, 0.72);
+}
+
+.custom-select-ui,
+.custom-input-ui {
+    background-color: rgba(255, 255, 255, 0.72);
+}
+
+.thanks-info-card {
+    background: rgba(255, 255, 255, 0.7);
+}
     </style>
 </head>
 <body>
@@ -2578,10 +2702,53 @@ html::-webkit-scrollbar-thumb:hover {
                     <div class="select-wrapper">
                         <select class="custom-select-ui" id="prefSelect">
                             <option value="">選択してください</option>
+                            <option value="北海道">北海道</option>
+                            <option value="青森県">青森県</option>
+                            <option value="岩手県">岩手県</option>
+                            <option value="宮城県">宮城県</option>
+                            <option value="秋田県">秋田県</option>
+                            <option value="山形県">山形県</option>
+                            <option value="福島県">福島県</option>
+                            <option value="茨城県">茨城県</option>
+                            <option value="栃木県">栃木県</option>
+                            <option value="群馬県">群馬県</option>
+                            <option value="埼玉県">埼玉県</option>
+                            <option value="千葉県">千葉県</option>
                             <option value="東京都">東京都</option>
-                            <option value="大阪府">大阪府</option>
+                            <option value="神奈川県">神奈川県</option>
+                            <option value="新潟県">新潟県</option>
+                            <option value="富山県">富山県</option>
+                            <option value="石川県">石川県</option>
+                            <option value="福井県">福井県</option>
+                            <option value="山梨県">山梨県</option>
+                            <option value="長野県">長野県</option>
+                            <option value="岐阜県">岐阜県</option>
+                            <option value="静岡県">静岡県</option>
                             <option value="愛知県">愛知県</option>
-                            <!-- Add remaining options as needed -->
+                            <option value="三重県">三重県</option>
+                            <option value="滋賀県">滋賀県</option>
+                            <option value="京都府">京都府</option>
+                            <option value="大阪府">大阪府</option>
+                            <option value="兵庫県">兵庫県</option>
+                            <option value="奈良県">奈良県</option>
+                            <option value="和歌山県">和歌山県</option>
+                            <option value="鳥取県">鳥取県</option>
+                            <option value="島根県">島根県</option>
+                            <option value="岡山県">岡山県</option>
+                            <option value="広島県">広島県</option>
+                            <option value="山口県">山口県</option>
+                            <option value="徳島県">徳島県</option>
+                            <option value="香川県">香川県</option>
+                            <option value="愛媛県">愛媛県</option>
+                            <option value="高知県">高知県</option>
+                            <option value="福岡県">福岡県</option>
+                            <option value="佐賀県">佐賀県</option>
+                            <option value="長崎県">長崎県</option>
+                            <option value="熊本県">熊本県</option>
+                            <option value="大分県">大分県</option>
+                            <option value="宮崎県">宮崎県</option>
+                            <option value="鹿児島県">鹿児島県</option>
+                            <option value="沖縄県">沖縄県</option>
                         </select>
                     </div>
                 </div>
