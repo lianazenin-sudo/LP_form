@@ -32,6 +32,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="images/form-bg.png">
+
+    <!-- Real mobile viewport height fix: some in-app / older mobile
+         browsers get 100vh and even 100dvh wrong (address bar,
+         URL bar collapse, etc). This measures the true visible
+         height in JS and exposes it as --vh, used as a fallback
+         tier in the CSS below (vh -> --vh -> dvh). -->
+    <script>
+    (function () {
+        function setRealVh() {
+            document.documentElement.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px');
+        }
+        setRealVh();
+        window.addEventListener('resize', setRealVh);
+        window.addEventListener('orientationchange', setRealVh);
+    })();
+    </script>
+
     <style>
 * {
     box-sizing: border-box;
@@ -1327,6 +1344,7 @@ a, button, input, select, .selection-card, .gender-option-btn, .checkbox-contain
     animation: modalPopIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.15) forwards;
     max-width: min(390px, 100%);
     max-height: calc(100vh - 24px);   /* fallback for browsers without dvh support (some mobile/in-app browsers) */
+    max-height: calc((var(--vh, 1vh) * 100) - 24px);   /* real measured mobile viewport height */
     max-height: calc(100dvh - 24px);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -1601,6 +1619,7 @@ html::-webkit-scrollbar-thumb:hover {
     position: relative;
     transition: opacity 0.4s ease, transform 0.4s ease;
     min-height: calc(100vh - 64px);   /* fallback for browsers without dvh support (some mobile/in-app browsers) */
+    min-height: calc((var(--vh, 1vh) * 100) - 64px);   /* real measured mobile viewport height */
     min-height: calc(100dvh - 64px);
     padding: clamp(14px, 4.2vw, 20px)
              clamp(12px, 4.2vw, 20px)
@@ -1720,6 +1739,7 @@ html::-webkit-scrollbar-thumb:hover {
     background-position: center top;
     background-repeat: no-repeat;
     height: 100vh;   /* fallback for browsers without dvh support (some mobile/in-app browsers) */
+    height: calc(var(--vh, 1vh) * 100);   /* real measured mobile viewport height */
     height: 100dvh;
     background: linear-gradient(
             rgba(40, 55, 75, 0.45),
@@ -1739,6 +1759,7 @@ html::-webkit-scrollbar-thumb:hover {
     width: 100%;
     max-width: 480px;
     min-height: 100vh;   /* fallback for browsers without dvh support (some mobile/in-app browsers) */
+    min-height: calc(var(--vh, 1vh) * 100);   /* real measured mobile viewport height */
     min-height: 100dvh;
     display: flex;
     flex-direction: column;
@@ -1756,6 +1777,7 @@ body {
     display: flex;
     justify-content: center;
     min-height: 100vh;   /* fallback for browsers without dvh support (some mobile/in-app browsers) */
+    min-height: calc(var(--vh, 1vh) * 100);   /* real measured mobile viewport height */
     min-height: 100dvh;
     background: transparent;
 }
