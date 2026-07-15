@@ -2252,23 +2252,28 @@ body {
         min-height: 0;
     }
 }
-        /* ============================================================
-   LANDING VIEW HEIGHT FIX:
-   The landing column must always fill the real viewport height,
-   and the white CTA sheet stretches to absorb any leftover space
-   below the buttons. Content position is unchanged — flex-grow
-   only extends the white background downward.
+/* ============================================================
+   LANDING VIEW HEIGHT FIX — must be the LAST rules in the sheet.
+   !important defeats leftover min-height:0 rules AND the inline
+   display:block that script.js writes onto #landingView.
    ============================================================ */
-.cta-action-sheet {
-    flex: 1 0 auto;                          /* was flex: none */
-    padding-bottom: clamp(28px, 8vw, 40px);
-}
-
 body.landing-mode,
 body.landing-mode .page-container {
-    min-height: 100vh;                             /* fallback */
-    min-height: calc(var(--vh, 1vh) * 100);        /* real measured mobile height */
-    min-height: 100dvh;                            /* was min-height: 0 */
+    min-height: 100vh !important;
+    min-height: calc(var(--vh, 1vh) * 100) !important;
+    min-height: 100dvh !important;
+}
+
+body.landing-mode #landingView {
+    display: flex !important;      /* overrides JS inline display:block */
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+}
+
+body.landing-mode .cta-action-sheet {
+    flex: 1 0 auto !important;     /* white sheet absorbs all leftover height */
+    margin-top: 0 !important;
+    padding-bottom: clamp(28px, 8vw, 40px);
 }
 </style>
 </head>
