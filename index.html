@@ -1326,6 +1326,7 @@ a, button, input, select, .selection-card, .gender-option-btn, .checkbox-contain
     box-shadow: 0 15px 40px rgba(0,0,0,0.3);
     animation: modalPopIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.15) forwards;
     max-width: min(390px, 100%);
+    max-height: calc(100vh - 24px);   /* fallback for browsers without dvh support (some mobile/in-app browsers) */
     max-height: calc(100dvh - 24px);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -1599,6 +1600,7 @@ html::-webkit-scrollbar-thumb:hover {
     flex-direction: column;
     position: relative;
     transition: opacity 0.4s ease, transform 0.4s ease;
+    min-height: calc(100vh - 64px);   /* fallback for browsers without dvh support (some mobile/in-app browsers) */
     min-height: calc(100dvh - 64px);
     padding: clamp(14px, 4.2vw, 20px)
              clamp(12px, 4.2vw, 20px)
@@ -1717,6 +1719,7 @@ html::-webkit-scrollbar-thumb:hover {
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
+    height: 100vh;   /* fallback for browsers without dvh support (some mobile/in-app browsers) */
     height: 100dvh;
     background: linear-gradient(
             rgba(40, 55, 75, 0.45),
@@ -1735,6 +1738,7 @@ html::-webkit-scrollbar-thumb:hover {
 .page-container {
     width: 100%;
     max-width: 480px;
+    min-height: 100vh;   /* fallback for browsers without dvh support (some mobile/in-app browsers) */
     min-height: 100dvh;
     display: flex;
     flex-direction: column;
@@ -1751,6 +1755,7 @@ body {
     margin: 0;
     display: flex;
     justify-content: center;
+    min-height: 100vh;   /* fallback for browsers without dvh support (some mobile/in-app browsers) */
     min-height: 100dvh;
     background: transparent;
 }
