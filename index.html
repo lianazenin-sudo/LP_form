@@ -1981,7 +1981,7 @@ body {
     flex: 1;                     /* the CTA band itself runs all the way down */
     margin-top: 0;               /* removes the frosted gap band under the hero — continuous now */
     padding-top: calc(clamp(20px, 6vw, 30px) + 50px);  /* buttons stay exactly where they were; hanging bubble still clears */
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 1);   /* opacity raised to 100% per request (was 0.7) */
 }
 
 /* Short small screens keep their tightened spacing
@@ -2071,6 +2071,136 @@ body {
     width: 100%;
     height: 100%;
     display: block;
+}
+
+/* =========================================================
+   PC / LAPTOP — DESKTOP WIZARD PRESENTATION (NEW)
+   Everything above this block is your original code, untouched.
+   Below 1025px (phones + tablets) nothing changes at all — the
+   mobile layout you already approved stays exactly as it is.
+
+   From 1025px up, this block scales the Step 1–5 diagnostic
+   panel and the thank-you card up to match the desktop mock:
+   a slightly wider floating card, more generous padding, and
+   larger type/touch targets sized for a mouse/trackpad, while
+   the factory/character artwork keeps showing full-bleed on
+   both sides via the existing #siteBgLayer.
+   ========================================================= */
+@media (min-width: 1025px) {
+
+    .page-container {
+        max-width: 520px;
+    }
+
+    #diagnosticWizardView {
+        margin: 40px auto 48px auto;
+        padding: 28px 30px 96px 30px;
+        border-radius: 28px;
+        box-shadow: 0 20px 55px rgba(0, 0, 0, 0.18);
+    }
+
+    .step-badge-pill {
+        font-size: 15px;
+        padding: 10px 46px;
+    }
+
+    .meta-tag-red,
+    .meta-counter {
+        font-size: 14px;
+    }
+
+    .question-title {
+        font-size: 18px;
+        margin-bottom: 32px;
+    }
+
+    .selection-card {
+        padding: 18px 22px;
+        min-height: 56px;
+        cursor: pointer;
+    }
+
+    .card-main-txt {
+        font-size: 16px;
+    }
+
+    .card-sub-txt {
+        font-size: 12px;
+    }
+
+    .form-label {
+        font-size: 14px;
+    }
+
+    .form-hint-aside {
+        font-size: 11px;
+    }
+
+    .custom-select-ui,
+    .custom-input-ui {
+        padding: 16px 18px;
+        min-height: 48px;
+        font-size: 15px;
+    }
+
+    .gender-option-btn {
+        padding: 14px;
+        font-size: 15px;
+        min-height: 48px;
+    }
+
+    .wizard-footer-nav {
+        padding: 16px 30px calc(16px + env(safe-area-inset-bottom, 0px)) 30px;
+        min-height: 82px;
+    }
+
+    .btn-nav-back,
+    .btn-nav-next {
+        height: 50px;
+        font-size: 15px;
+    }
+
+    .btn-nav-back:hover {
+        background-color: #f4f8ff;
+    }
+
+    .btn-nav-next:hover {
+        background-color: #fff6f2;
+    }
+
+    #thankYouView {
+        margin: 40px auto 48px auto;
+        max-width: 520px;
+    }
+
+    .thanks-headline {
+        font-size: 20px;
+    }
+
+    .thanks-info-card {
+        margin-top: 30px;
+    }
+
+    .btn-thanks-line:hover,
+    .btn-thanks-phone-call:hover,
+    .btn-line-apply:hover {
+        filter: brightness(1.03);
+    }
+
+    .util-btn-phone:hover,
+    .util-btn-line:hover {
+        filter: brightness(1.05);
+    }
+}
+
+/* Mouse-only hover polish for the selection cards, scoped so
+   touch devices at desktop widths (e.g. large tablets) don't
+   get a "stuck" hover state after tapping. */
+@media (min-width: 1025px) and (hover: hover) and (pointer: fine) {
+    .selection-card:not(.selected):hover {
+        border-color: #ff6f43;
+        background-color: #fffaf7;
+    }
 }
 </style>
 </head>
