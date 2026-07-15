@@ -334,13 +334,13 @@
     font-size: 14px;
     font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 3px 0px #1e3da1;
+    box-shadow: none;
     transition: all 0.05s;
 }
 
 .btn-nav-back:active {
-    transform: translateY(2px);
-    box-shadow: 0 1px 0px #1e3da1;
+    transform: translateY(1px);
+    box-shadow: none;
 }
 
 .btn-nav-next {
@@ -353,13 +353,13 @@
     font-size: 14px;
     font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 3px 0px #d44e23;
+    box-shadow: none;
     transition: all 0.05s;
 }
 
 .btn-nav-next:active {
-    transform: translateY(2px);
-    box-shadow: 0 1px 0px #d44e23;
+    transform: translateY(1px);
+    box-shadow: none;
 }
 
 .thanks-main-header {
@@ -445,6 +445,7 @@
     box-shadow: 0 6px 0px #02BD03, 0 8px 12px rgba(0,0,0,0.15);
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
+    position: relative;
 }
 
 .btn-thanks-line:hover {
@@ -462,8 +463,8 @@
 }
 
 .btn-thanks-phone-call {
-    border: 3px solid #E85921;
-    color: #E85921;
+    border: 3px solid #C34A0F;
+    color: #ffffff;
     text-decoration: none;
     font-size: 18px;
     font-weight: 600;
@@ -477,16 +478,17 @@
     box-sizing: border-box;
     transition: all 0.05s ease;
     max-width: 320px;
-    background: #fff;
+    background: #E85921;
     text-align: center;
     outline: none;
-    box-shadow: 0 6px 0px #E85921, 0 8px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 0px #C34A0F, 0 8px 12px rgba(0,0,0,0.15);
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
+    position: relative;
 }
 
 .btn-thanks-phone-call:hover {
-    background-color: #fdf5f2;
+    background-color: #d2501c;
 }
 
 .custom-validation-alert {
@@ -603,7 +605,7 @@
     width: 80%;
     background: #3FDA40;
     color: #ffffff;
-    border: 3px solid #02BD03;
+    border: 3px solid #3FDA40;
     border-radius: 40px;
     padding: 16px 8px;
     font-weight: 600;
@@ -618,6 +620,11 @@
     transition: all 0.05s ease;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
+     background: #3FDA40;                       /* solid red fill */
+    color: #ffffff;
+    font-weight: 700;
+    border-color: #3FDA40;
+    box-shadow: 0 6px 0px #02BD03, 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
 .modal-btn-line:hover {
@@ -644,6 +651,10 @@
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
     margin-bottom: 30px;
+    background: #D9D9D9;                       /* solid red fill */
+    color: #545454;
+    
+
 }
 
 .modal-btn-continue:hover {
@@ -763,14 +774,29 @@
     font-weight: 600;
     color: #ffffff;
     text-decoration: none;
-    background: #3FDA40;
-    border: 3px solid #02BD03;
-    border-radius: 40px;
-    box-shadow: 0 6px 0px #02BD03, 0 8px 12px rgba(0, 0, 0, 0.15);
     cursor: pointer;
     outline: none;
     transition: all 0.05s ease;
     -webkit-tap-highlight-color: transparent;
+    position: relative;
+    
+    
+    background: #3FDA40;
+    color: #ffffff;
+    border: 3px solid #3FDA40;
+    border-radius: 40px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    box-shadow: 0 6px 0px #02BD03, 0 8px 12px rgba(0,0,0,0.15);
+    transition: all 0.05s ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    font-size: clamp(14px, 4.4vw, 18px);
+    gap: clamp(12px, 6.4vw, 30px);
+    padding: clamp(13px, 3.9vw, 16px) 8px;
+    
 }
 
 .btn-line-apply:active {
@@ -793,8 +819,8 @@
     }
 
     .btn-line-apply__icon {
-    width: 38px;
-    height: 38px;
+    width: 28px;
+    height: 28px;
     }
 
     .large-phone-num {
@@ -964,7 +990,7 @@ a, button, input, select, .selection-card, .gender-option-btn, .checkbox-contain
     transition: all 0.05s ease;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
-    font-size: clamp(17px, 5.4vw, 22px);
+    font-size: clamp(14px, 5.4vw, 18px);
     padding: clamp(13px, 3.9vw, 16px) 8px;
     min-height: 48px;
 }
@@ -974,7 +1000,7 @@ a, button, input, select, .selection-card, .gender-option-btn, .checkbox-contain
     max-width: 360px;
     background: #3FDA40;
     color: #ffffff;
-    border: 3px solid #02BD03;
+    border: 3px solid #3FDA40;
     border-radius: 40px;
     font-weight: 600;
     text-align: center;
@@ -997,7 +1023,7 @@ a, button, input, select, .selection-card, .gender-option-btn, .checkbox-contain
     width: auto;
     object-fit: contain;
     display: block;
-    height: clamp(28px, 8.6vw, 40px);
+    height: clamp(24px, 8.6vw, 30px);
 }
 
 .meta-status-row {
@@ -1254,7 +1280,7 @@ a, button, input, select, .selection-card, .gender-option-btn, .checkbox-contain
 
 .btn-thanks-line, .btn-thanks-phone-call {
     font-size: clamp(13px, 4.2vw, 18px);
-    padding: clamp(10px, 3.4vw, 16px) clamp(10px, 4vw, 24px);
+    padding: clamp(10px, 3.4vw, 16px) clamp(34px, 9vw, 42px) clamp(10px, 3.4vw, 16px) clamp(10px, 4vw, 24px);
     gap: clamp(6px, 2.4vw, 15px);
     min-height: 48px;
 }
@@ -1475,15 +1501,20 @@ html::-webkit-scrollbar-thumb:hover {
     gap: clamp(10px, 3.4vw, 16px);
 }
 
+.btn-line-apply {
+    padding-right: clamp(36px, 10vw, 44px);
+}
+
 .modal-btn-line, .modal-btn-continue {
+    
     font-size: clamp(13px, 3.8vw, 15px);
 }
 
 .btn-line-apply__icon {
     object-fit: contain;
     flex-shrink: 0;
-    width: clamp(28px, 8.6vw, 38px);
-    height: clamp(28px, 8.6vw, 38px);
+    width: clamp(20px, 8.6vw, 28px);
+    height: clamp(20px, 8.6vw, 28px);
 }
 
 .modal-close-x {
@@ -1696,29 +1727,20 @@ html::-webkit-scrollbar-thumb:hover {
 
 @media (max-width:480px) {
     .page-container {
-    background: #ffffff;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
     box-shadow: none;
     border: none;
     }
 }
 
 .page-container {
-    background-image: linear-gradient(rgba(230, 245, 255, 0.90), rgba(230, 245, 255, 0.90)),
-        url("images/form-bg.png");
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
     width: 100%;
     max-width: 480px;
     min-height: 100dvh;
     display: flex;
     flex-direction: column;
     position: relative;
-    background: rgba(255,255,255,0.78);
-    -webkit-backdrop-filter: blur(18px);
-    box-shadow: 0 12px 40px rgba(0,0,0,.08);
+    background: transparent;
+    box-shadow: 0 12px 40px rgba(0,0,0,.01);
     overflow: hidden;
 }
 
@@ -1853,6 +1875,203 @@ body {
     transform: translateX(-50%);
     z-index: 10;
 }
+
+/* =========================================================
+   STEP-AS-FOREGROUND-PANEL (client-approved approach):
+   The FV background stays as-is; the Step form appears as a
+   floating frosted panel IN FRONT of it, on the SAME page.
+   Matches the attached mock:
+   - White header + red ticker stay fixed at the top on the
+     Step screens (the ticker was moved OUT of #landingView
+     in the HTML so it no longer disappears with the FV).
+   - Behind and around the panel, the factory/character
+     artwork shows at (nearly) full strength.
+   - The wizard itself is the rounded frosted panel, with the
+     戻る/次へ buttons INSIDE its bottom edge.
+   Mechanism: when #landingView is hidden (i.e. Step 1–5 or
+   thank-you is showing), the column's white frosting clears
+   via :has(). Browsers without :has() simply keep the frosted
+   column — a perfectly usable graceful fallback.
+   ========================================================= */
+
+/* 1) Column turns to clear glass in Step / thank-you mode so
+      the FV artwork shows through around the panel */
+.page-container:has(#landingView.js-view-hidden) {
+    background: transparent;
+}
+
+/* 2) Brighter backdrop so the artwork reads vividly like the
+      mock. TUNING KNOB: raise 0.28 for a darker image. */
+#siteBgLayer {
+    background: linear-gradient(rgba(30, 45, 65, 0.28), rgba(30, 45, 65, 0.28)),
+        url("images/form-bg.png") center center / cover no-repeat;
+}
+
+/* 3) The wizard IS the floating foreground panel */
+#diagnosticWizardView {
+    margin: clamp(14px, 4vw, 24px) clamp(12px, 3.6vw, 20px) clamp(20px, 5.2vw, 30px) clamp(12px, 3.6vw, 20px);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #c9dff0;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.14);
+    overflow: hidden;                       /* rounds the footer's corners too */
+    min-height: 0;                          /* panel hugs its content like the mock */
+    padding: clamp(14px, 4.2vw, 20px)
+             clamp(12px, 4.2vw, 20px)
+             calc(88px + env(safe-area-inset-bottom, 0px))
+             clamp(12px, 4.2vw, 20px);
+}
+
+/* 4) Nav bar sits INSIDE the panel — no separate colored strip */
+.wizard-footer-nav {
+    background: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+
+/* 5) Thank-you page gets the identical foreground-panel look */
+#thankYouView {
+    width: auto;
+    margin: clamp(14px, 4vw, 24px) clamp(12px, 3.6vw, 20px) clamp(20px, 5.2vw, 30px) clamp(12px, 3.6vw, 20px);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.62);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.14);
+}
+
+/* 6) Crisp near-white cards and inputs on the frosted panel,
+      exactly like the mock (selected orange + hover/focus
+      white states still win by higher specificity) */
+.selection-card,
+.gender-option-btn {
+    background: #ffffff;
+}
+
+.custom-select-ui,
+.custom-input-ui {
+    background-color: #ffffff;
+}
+
+.thanks-info-card {
+    background: rgba(255, 255, 255, 0.92);
+}
+
+/* =========================================================
+   FV → CTA CONTINUITY (client note): unify desktop & mobile.
+   The FV background now extends ALL THE WAY to the bottom of
+   the first view, and the CTA area sits on a white → pale-blue
+   SEMI-TRANSPARENT gradient layer over it, so the FV flows
+   naturally into the CTA section instead of looking like a
+   separate pale-blue block. Mobile gets a slightly stronger
+   layer for readability, exactly as described — the design
+   approach itself is identical on both.
+   TUNING KNOBS: the two rgba alphas (raise = stronger layer /
+   fainter image, lower = more image).
+   ========================================================= */
+#landingView {
+    display: flex;
+    flex-direction: column;
+    flex: 1;                     /* the landing view fills the column to the bottom edge */
+}
+
+.cta-action-sheet {
+    flex: 1;                     /* the CTA band itself runs all the way down */
+    margin-top: 0;               /* removes the frosted gap band under the hero — continuous now */
+    padding-top: calc(clamp(20px, 6vw, 30px) + 50px);  /* buttons stay exactly where they were; hanging bubble still clears */
+    background: rgba(255, 255, 255, 0.7);
+}
+
+/* Short small screens keep their tightened spacing
+   (= the former 16px padding + 30px margin, merged) */
+@media screen and (max-width: 375px) and (max-height: 750px) {
+    .cta-action-sheet {
+        padding-top: 46px;
+    }
+}
+
+/* =========================================================
+   MOBILE-ONLY BACKGROUND IMAGE SWAP:
+   On phones, every place that shows "images/form-bg.png"
+   switches to "images/spform.png" instead (a version of the
+   artwork cropped/composed for narrow screens). Desktop/tablet
+   keep form-bg.png untouched. Only the file changes here —
+   all gradients, sizing, and positioning stay identical.
+   ========================================================= */
+@media (max-width: 480px) {
+    #siteBgLayer {
+        background-image:
+            linear-gradient(rgba(30, 45, 65, 0.28), rgba(30, 45, 65, 0.28)),
+            url("images/spform.png");
+    }
+}
+
+/* =========================================================
+   TABLET-ONLY BACKGROUND IMAGE SWAP:
+   Same idea, but for tablet widths — "images/form-bg.png"
+   becomes "images/tabform.png" here. Phones (above) and
+   desktop (untouched, outside both media queries) keep their
+   own respective images.
+   ========================================================= */
+@media (min-width: 481px) and (max-width: 1024px) {
+    #siteBgLayer {
+        background-image:
+            linear-gradient(rgba(30, 45, 65, 0.28), rgba(30, 45, 65, 0.28)),
+            url("images/tabform.png");
+    }
+}
+
+/* =========================================================
+   FV CTA BUTTONS — FILLED STYLE (per mock):
+   ・診断ボタン: solid red fill, white bold text
+   ・Both buttons: white circular「›」badge on the right edge
+   ・LINE button: icon sits close to the text like the mock
+   Press animation (translateY + shadow) behaviour unchanged.
+   ========================================================= */
+.btn-cta-diagnostic {
+    position: relative;
+    background: #E60012;                       /* solid red fill */
+    color: #ffffff;
+    font-weight: 700;
+    border-color: #C3000F;
+    box-shadow: 0 6px 0px #A50000, 0 8px 12px rgba(0, 0, 0, 0.15);
+    padding-left: clamp(40px, 11vw, 48px);     /* symmetric so the text stays centred */
+    padding-right: clamp(40px, 11vw, 48px);    /* chevron badge lives in this space */
+}
+
+.btn-cta-diagnostic:active {
+    box-shadow: 0 2px 0px #A50000, 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.btn-cta-line {
+    position: relative;
+    font-weight: 700;
+    gap: clamp(8px, 2.6vw, 12px);              /* icon hugs the text like the mock */
+    padding-left: clamp(36px, 10vw, 44px);
+    padding-right: clamp(40px, 11vw, 48px);
+}
+
+/* White circular chevron badge, right edge of both buttons */
+.chevron-badge {
+    position: absolute;
+    right: clamp(14px, 4vw, 20px);
+    top: 50%;
+    transform: translateY(-50%);
+    width: clamp(18px, 5.5vw, 22px);
+    height: clamp(18px, 5.5vw, 22px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.chevron-badge svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
 </style>
 </head>
 <body>
@@ -1885,14 +2104,17 @@ body {
             </div>
         </header>
 
+        <!-- GLOBAL ALERT TICKER (moved out of #landingView so it stays
+             visible on the Step screens, matching the approved mock) -->
+        <div class="alert-ticker">
+            <div class="ticker-track">
+                <span>🔔 【全国対応】即入寮・初期費用0円の住み込み工場求人は寮寮ワーク！ &nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span aria-hidden="true">🔔 【全国対応】即入寮・初期費用0円の住み込み工場求人は寮寮ワーク！ &nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+        </div>
+
         <!-- VIEW A: LANDING PAGE -->
         <section id="landingView">
-            <div class="alert-ticker">
-                <div class="ticker-track">
-                    <span>🔔 【全国対応】即入寮・初期費用0円の住み込み工場求人は寮寮ワーク！ &nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <span aria-hidden="true">🔔 【全国対応】即入寮・初期費用0円の住み込み工場求人は寮寮ワーク！ &nbsp;&nbsp;&nbsp;&nbsp;</span>
-                </div>
-            </div>
 
         <section class="hero-graphic-wrapper">
             <img src="images/Group 1425.svg" alt="メインビジュアル求人案内" class="hero-main-render">
@@ -1908,11 +2130,21 @@ body {
         id="diagnosticAction" 
         onclick="event.stopPropagation(); startDiagnosticWizard(); return false;">
     簡単1分！適性診断を始める
+    <span class="chevron-badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+            <path d="M8 5l7 7-7 7" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </span>
 </button>
 
 <button class="btn-cta-line" id="lineMainAction" onclick="window.location.href='https://l-tra.com/ad/LTRYiU9Ai8';">
     <img src="images/image 12 (1).svg" alt="" class="cta-line-icon-img">
     今すぐLINEで応募する
+    <span class="chevron-badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+            <path d="M8 5l7 7-7 7" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </span>
 </button>
         </main>
         </section>
@@ -2172,6 +2404,11 @@ body {
                     <a href="https://l-tra.com/ad/LTRYiU9Ai8" target="_blank" class="btn-thanks-line">
                         <img src="images/image 12 (1).svg" alt="">
                         今すぐLINEで応募する
+                        <span class="chevron-badge" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M8 5l7 7-7 7" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
                     </a>
                 </div>
         
@@ -2181,6 +2418,11 @@ body {
                     <a href="tel:0120-387-027" class="btn-thanks-phone-call">
                         <img src="images/Vector.svg" alt="">
                         今すぐ無料電話をかける
+                        <span class="chevron-badge" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M8 5l7 7-7 7" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
                     </a>
                 </div>
         
@@ -2229,6 +2471,11 @@ body {
     <img src="images/image 12 (1).svg" alt="LINE" class="btn-line-apply__icon">
     <span class="btn-line-apply__text">
         <span>今すぐLINEで</span><span>応募する</span>
+    </span>
+    <span class="chevron-badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+            <path d="M8 5l7 7-7 7" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
     </span>
 </a>
     
