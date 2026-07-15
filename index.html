@@ -2275,6 +2275,40 @@ body.landing-mode .cta-action-sheet {
     margin-top: 0 !important;
     padding-bottom: clamp(28px, 8vw, 40px);
 }
+
+        /* Full-height frosted column, flush with the header — no floating card.
+       TUNING KNOB: the 0.72 alpha (raise = whiter panel, lower = more artwork) */
+    #diagnosticWizardView {
+        margin: 0;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+        background: rgba(255, 255, 255, 0.72);
+        flex: 1 1 auto;                                        /* fills the column to the bottom edge */
+        min-height: calc(100vh - 64px);                        /* fallback */
+        min-height: calc((var(--vh, 1vh) * 100) - 64px);
+        min-height: calc(100dvh - 64px);
+        padding: 28px 30px 110px 30px;
+    }
+
+    /* The red ticker is absent on the Step/thank-you screens in the mock —
+       hidden on desktop only, and only outside the landing view.
+       Delete this rule if you want the ticker back. */
+    body:not(.landing-mode) .alert-ticker {
+        display: none;
+    }
+
+        #thankYouView {
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        background: rgba(255, 255, 255, 0.72);
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        flex: 1 1 auto;
+        width: auto;
+        max-width: none;
+    }
 </style>
 </head>
 <body>
