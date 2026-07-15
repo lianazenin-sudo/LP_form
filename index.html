@@ -15,8 +15,8 @@
     </script>
     <!-- End Google Tag Manager -->
 
-    <!-- L-TRACK -->
-    <script src="https://l-tra.com/lp/ltrack_lp.js"></script>
+    <!-- L-TRACK (defer = ページ描画をブロックしない。計測に問題が出る場合のみ defer を外す) -->
+    <script src="https://l-tra.com/lp/ltrack_lp.js" defer></script>
 
     <!-- Adsip: call tracking -->
     <script type="text/javascript">
@@ -26,12 +26,49 @@
     odb('phone.trackingNumber', '0120-387-027', undefined, {trigger: {mobile: 'tap'}});
     </script>
 
-    <title>寮付き工場求人 - 寮寮ワーク</title>
-    
+    <title>寮付き工場求人・住み込み求人なら寮寮ワーク｜寮費無料・即日入寮OK</title>
+
+    <!-- ================= TDK ================= -->
+    <meta name="description" content="寮費無料・初期費用0円の寮付き（住み込み）工場求人なら寮寮ワーク。最短即日入寮OK・未経験歓迎。カンタン1分の適性診断で、あなたに合ったお仕事と寮をご案内します。全国対応・LINEで気軽に相談できます。">
+    <meta name="keywords" content="寮付き求人,住み込み求人,工場求人,寮費無料,即日入寮,未経験歓迎,寮寮ワーク">
+
+    <!-- ★要変更: 本番の正式URLに置き換えてください -->
+    <link rel="canonical" href="https://ryoryo-work.com/lp6/sumikomi_g/">
+
+    <!-- ================= OGP ================= -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="寮寮ワーク">
+    <meta property="og:title" content="寮付き工場求人・住み込み求人なら寮寮ワーク｜寮費無料・即日入寮OK">
+    <meta property="og:description" content="寮費無料・初期費用0円の寮付き（住み込み）工場求人。最短即日入寮OK・未経験歓迎。カンタン1分の適性診断で、あなたに合ったお仕事をご案内します。">
+    <!-- ★要変更: 本番の正式URLに置き換えてください -->
+    <meta property="og:url" content="https://ryoryo-work.com/lp6/sumikomi_g/">
+    <!-- ★要作成: 1200×630px のOGP画像を images/ogp.png として書き出してください（絶対URL必須） -->
+    <meta property="og:image" content="https://ryoryo-work.com/lp6/sumikomi_g/images/ogp.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Twitter (X) card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="寮付き工場求人・住み込み求人なら寮寮ワーク｜寮費無料・即日入寮OK">
+    <meta name="twitter:description" content="寮費無料・初期費用0円の寮付き（住み込み）工場求人。最短即日入寮OK・未経験歓迎。">
+    <meta name="twitter:image" content="https://ryoryo-work.com/lp6/sumikomi_g/images/ogp.png">
+
+    <!-- ================= FAVICON =================
+         ★要作成: ロゴから favicon.ico / favicon-32.png / apple-touch-icon.png(180×180) を書き出して images/ に置いてください -->
+    <link rel="icon" href="images/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="preload" as="image" href="images/form-bg.png">
+    <!-- PageSpeed: preload the CORRECT background per device — matches the CSS
+         image swaps (mobile=spform / tablet=tabform / desktop=form-bg). The old
+         single preload fetched form-bg.png on phones where it's never shown. -->
+    <link rel="preload" as="image" href="images/spform.png" media="(max-width: 480px)">
+    <link rel="preload" as="image" href="images/tabform.png" media="(min-width: 481px) and (max-width: 1024px)">
+    <link rel="preload" as="image" href="images/form-bg.png" media="(min-width: 1025px)">
 
     <!-- Real mobile viewport height fix: some in-app / older mobile
          browsers get 100vh and even 100dvh wrong (address bar,
@@ -2323,10 +2360,11 @@ body.landing-mode .cta-action-sheet {
         <section id="landingView">
 
         <section class="hero-graphic-wrapper">
-            <img src="images/Group 1425.svg" alt="メインビジュアル求人案内" class="hero-main-render">
+            <img src="images/Group 1425.svg" alt="最短即日入寮できる寮付き工場求人 - 即入寮OK・寮費無料あり・未経験歓迎" class="hero-main-render" fetchpriority="high">
             
             <div class="speech-bubble-overlay">
-                <img src="images/Group 1426.svg" alt="＼カンタン応募はこちらから／" class="speech-bubble-img">
+                <!-- alt空: 同じ文言がすぐ下のspanで実テキストとして存在するため（読み上げ重複防止） -->
+                <img src="images/Group 1426.svg" alt="" class="speech-bubble-img">
                 <span class="speech-bubble-text">＼カンタン応募はこちらから／</span>
             </div>
         </section>
@@ -2552,7 +2590,7 @@ body.landing-mode .cta-action-sheet {
 
             <!-- Vector Operator Character Overlay Asset Placeholder -->
             <div class="floating-avatar-box">
-                <img src="images/character-avatar.png" alt="" class="avatar-img">
+                <img src="images/character-avatar.png" alt="" class="avatar-img" loading="lazy" decoding="async">
             </div>
 
             <!-- SYSTEM BACK AND FORTH NAVIGATION BUTTONS BAR -->
@@ -2586,14 +2624,14 @@ body.landing-mode .cta-action-sheet {
                     <div class="card-badge-blue">平日・祝日9:00〜18:00の間にご応募いただいた場合</div>
                     <div class="card-phone-flex">
                         <div class="phone-side-icon">
-                            <img src="images/image 14.svg" alt="">
+                            <img src="images/image 14.svg" alt="" loading="lazy" decoding="async">
                         </div>
                         <div class="phone-number-block">
                             <div class="large-phone-num">06-6940-0370</div>
                             <div class="time-guarantee-txt"><span class="red-bold">1時間以内</span>にお電話いたします。</div>
                         </div>
                         <div class="phone-side-icon">
-                            <img src="images/image 15.svg" alt="">
+                            <img src="images/image 15.svg" alt="" loading="lazy" decoding="async">
                         </div>
                     </div>
                 </div>
@@ -2650,12 +2688,12 @@ body.landing-mode .cta-action-sheet {
                 <p>このまま離れる前に、LINEで相談することもできます。</p>
             </div>
             <div class="modal-avatar-wrapper">
-                <img src="images/image 13.svg" alt="Operator Guide" />
+                <img src="images/image 13.svg" alt="Operator Guide" loading="lazy" decoding="async" />
             </div>
         </div>
         
         <div class="modal-body-content">
-            <img src="images/Group 1426.svg" alt="" class="speech-bubble-image">
+            <img src="images/Group 1426.svg" alt="" class="speech-bubble-image" loading="lazy" decoding="async">
                 <span class="speech-bubble-tag">寮・お仕事探しのメリット</span>
             </div>
             
