@@ -2252,6 +2252,24 @@ body {
         min-height: 0;
     }
 }
+        /* ============================================================
+   LANDING VIEW HEIGHT FIX:
+   The landing column must always fill the real viewport height,
+   and the white CTA sheet stretches to absorb any leftover space
+   below the buttons. Content position is unchanged — flex-grow
+   only extends the white background downward.
+   ============================================================ */
+.cta-action-sheet {
+    flex: 1 0 auto;                          /* was flex: none */
+    padding-bottom: clamp(28px, 8vw, 40px);
+}
+
+body.landing-mode,
+body.landing-mode .page-container {
+    min-height: 100vh;                             /* fallback */
+    min-height: calc(var(--vh, 1vh) * 100);        /* real measured mobile height */
+    min-height: 100dvh;                            /* was min-height: 0 */
+}
 </style>
 </head>
 <body>
