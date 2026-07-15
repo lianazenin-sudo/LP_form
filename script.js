@@ -78,12 +78,27 @@ function hideView(el) {
   el.style.transform = "";
 }
 
+/* ---------------------------------------------------------
+   Landing-mode body class
+   Lets the landing view size itself to its own content
+   (see the "body.landing-mode" CSS rule) instead of being
+   forced to fill the full viewport height like Step 1–5 and
+   the thank-you view need to. Toggled here instead of via a
+   CSS :has() selector so the override is 100% deterministic
+   in every browser.
+--------------------------------------------------------- */
+function setLandingBodyMode(isLanding) {
+  document.body.classList.toggle("landing-mode", isLanding);
+}
+
 function switchView(fromId, toId) {
   const from = document.getElementById(fromId);
   const to = document.getElementById(toId);
 
   hideView(from);
   showView(to);
+
+  setLandingBodyMode(toId === "landingView");
 
   if (toId === "diagnosticWizardView") {
     currentStep = 1;
@@ -567,6 +582,7 @@ window.addEventListener("DOMContentLoaded", () => {
   showView(document.getElementById("landingView"));
   hideView(document.getElementById("diagnosticWizardView"));
   hideView(document.getElementById("thankYouView"));
+  setLandingBodyMode(true);
 
   populateDateMenus();
   setupLandingNavigation();
