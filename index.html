@@ -169,7 +169,7 @@
     display: block;
 }
 
-@ (max-width: 373px) {
+@media (max-width: 373px) {
     .speech-bubble-text {
     font-size: 12px;
     margin-left: 9px;
@@ -1485,7 +1485,7 @@ a, button, input, select, .selection-card, .gender-option-btn, .checkbox-contain
     padding: 0;
     }
 
-    . {
+    .cta-action-sheet {
     margin-top: 50px;
     }
 }
@@ -1644,7 +1644,7 @@ html::-webkit-scrollbar-thumb:hover {
     object-fit:contain;
     }
 
-    . {
+    .cta-action-sheet {
     margin-top: 30px;
     padding-top: 16px;
     }
@@ -1677,7 +1677,7 @@ html::-webkit-scrollbar-thumb:hover {
     background-color: transparent;
 }
 
-. {
+.cta-action-sheet {
     margin-top: 50px;
     display: flex;
     flex-direction: column;
@@ -2045,7 +2045,7 @@ body {
     flex: 1;                     /* the CTA band itself runs all the way down */
     margin-top: 0;               /* removes the frosted gap band under the hero — continuous now */
     padding-top: calc(clamp(20px, 6vw, 30px) + 50px);  /* buttons stay exactly where they were; hanging bubble still clears */
-    background: rgba(215, 246, 255, 0.9);   /* opacity raised to 100% per request (was 0.7) */
+    background: rgba(255, 255, 255, 1);   /* opacity raised to 100% per request (was 0.7) */
 }
 
 /* Short small screens keep their tightened spacing
@@ -2149,7 +2149,7 @@ body {
    artwork showing full-bleed on both sides — matching the
    approved desktop screenshot.
    ========================================================= */
-@media (min-width: 600px) {
+@media (min-width: 1025px) {
 
     .page-container {
         max-width: 520px;
