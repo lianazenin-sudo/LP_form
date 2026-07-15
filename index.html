@@ -2229,6 +2229,29 @@ body {
         background-color: #fffaf7;
     }
 }
+
+        /* ============================================================
+   RESPONSIVE FIX: the landing view was forced to fill 100dvh
+   (page-container min-height + #landingView/.cta-action-sheet
+   flex:1), so any screen taller than the hero+buttons content
+   showed a big blank white block below the LINE button. This
+   lets the landing view size to its own content instead.
+   Step 1–5 and the thank-you view are untouched — they still
+   get full height for their footer positioning.
+   ============================================================ */
+.cta-action-sheet {
+    flex: none;                              /* stop forced stretch */
+    padding-bottom: clamp(28px, 8vw, 40px);  /* consistent breathing room instead */
+}
+
+@supports selector(:has(a)) {
+    .page-container:has(#landingView:not(.js-view-hidden)) {
+        min-height: 0;
+    }
+    body:has(#landingView:not(.js-view-hidden)) {
+        min-height: 0;
+    }
+}
 </style>
 </head>
 <body>
