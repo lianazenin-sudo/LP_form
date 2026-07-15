@@ -49,8 +49,9 @@ function populateDateMenus() {
 /* ---------------------------------------------------------
    View switching helper
 --------------------------------------------------------- */
+
 const VIEW_DISPLAY = {
-  landingView: "block",
+  landingView: "flex",         
   diagnosticWizardView: "flex",
   thankYouView: "flex",
 };
