@@ -2101,17 +2101,16 @@ body {
 }
 
 /* =========================================================
-   PC / LAPTOP — DESKTOP WIZARD PRESENTATION (NEW)
-   Everything above this block is your original code, untouched.
+   PC / LAPTOP — DESKTOP WIZARD PRESENTATION
+   Everything above this block is the original code, untouched.
    Below 1025px (phones + tablets) nothing changes at all — the
    mobile layout you already approved stays exactly as it is.
 
-   From 1025px up, this block scales the Step 1–5 diagnostic
-   panel and the thank-you card up to match the desktop mock:
-   a slightly wider floating card, more generous padding, and
-   larger type/touch targets sized for a mouse/trackpad, while
-   the factory/character artwork keeps showing full-bleed on
-   both sides via the existing #siteBgLayer.
+   From 1025px up, the Step 1–5 wizard and the thank-you view
+   become a FULL-HEIGHT frosted column flush with the header
+   (no floating rounded card), with the factory/character
+   artwork showing full-bleed on both sides — matching the
+   approved desktop screenshot.
    ========================================================= */
 @media (min-width: 1025px) {
 
@@ -2119,11 +2118,26 @@ body {
         max-width: 520px;
     }
 
+    /* Full-height frosted column, flush with the header — no floating card.
+       TUNING KNOB: the 0.72 alpha (raise = whiter panel, lower = more artwork) */
     #diagnosticWizardView {
-        margin: 40px auto 48px auto;
-        padding: 28px 30px 96px 30px;
-        border-radius: 28px;
-        box-shadow: 0 20px 55px rgba(0, 0, 0, 0.18);
+        margin: 0;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+        background: rgba(255, 255, 255, 0.72);
+        flex: 1 1 auto;                                        /* fills the column to the bottom edge */
+        min-height: calc(100vh - 64px);                        /* fallback */
+        min-height: calc((var(--vh, 1vh) * 100) - 64px);
+        min-height: calc(100dvh - 64px);
+        padding: 28px 30px 110px 30px;
+    }
+
+    /* The red ticker is absent on the Step/thank-you screens in the mock —
+       hidden on desktop only, and only outside the landing view.
+       Delete this rule if you want the ticker back. */
+    body:not(.landing-mode) .alert-ticker {
+        display: none;
     }
 
     .step-badge-pill {
@@ -2195,9 +2209,17 @@ body {
         background-color: #fff6f2;
     }
 
+    /* Thank-you view matches the wizard: full-height frosted column */
     #thankYouView {
-        margin: 40px auto 48px auto;
-        max-width: 520px;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        background: rgba(255, 255, 255, 0.72);
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        flex: 1 1 auto;
+        width: auto;
+        max-width: none;
     }
 
     .thanks-headline {
@@ -2231,31 +2253,12 @@ body {
 }
 
 /* ============================================================
-   RESPONSIVE FIX: the landing view was forced to fill 100dvh
-   (page-container min-height + #landingView/.cta-action-sheet
-   flex:1), so any screen taller than the hero+buttons content
-   showed a big blank white block below the LINE button. This
-   lets the landing view size to its own content instead.
-   Step 1–5 and the thank-you view are untouched — they still
-   get full height for their footer positioning.
-   ============================================================ */
-.cta-action-sheet {
-    flex: none;                              /* stop forced stretch */
-    padding-bottom: clamp(28px, 8vw, 40px);  /* consistent breathing room instead */
-}
-
-@supports selector(:has(a)) {
-    .page-container:has(#landingView:not(.js-view-hidden)) {
-        min-height: 0;
-    }
-    body:has(#landingView:not(.js-view-hidden)) {
-        min-height: 0;
-    }
-}
-/* ============================================================
    LANDING VIEW HEIGHT FIX — must be the LAST rules in the sheet.
    !important defeats leftover min-height:0 rules AND the inline
-   display:block that script.js writes onto #landingView.
+   display:block that script.js writes onto #landingView, so the
+   white CTA sheet always stretches to the bottom of the screen
+   on every device (phone, tablet, desktop). Content position is
+   unchanged — flex-grow only extends the white background down.
    ============================================================ */
 body.landing-mode,
 body.landing-mode .page-container {
@@ -2265,7 +2268,7 @@ body.landing-mode .page-container {
 }
 
 body.landing-mode #landingView {
-    display: flex !important;      /* overrides JS inline display:block */
+    display: flex !important;      /* overrides the JS inline display:block */
     flex-direction: column !important;
     flex: 1 1 auto !important;
 }
@@ -2275,40 +2278,6 @@ body.landing-mode .cta-action-sheet {
     margin-top: 0 !important;
     padding-bottom: clamp(28px, 8vw, 40px);
 }
-
-        /* Full-height frosted column, flush with the header — no floating card.
-       TUNING KNOB: the 0.72 alpha (raise = whiter panel, lower = more artwork) */
-    #diagnosticWizardView {
-        margin: 0;
-        border-radius: 0;
-        border: none;
-        box-shadow: none;
-        background: rgba(255, 255, 255, 0.72);
-        flex: 1 1 auto;                                        /* fills the column to the bottom edge */
-        min-height: calc(100vh - 64px);                        /* fallback */
-        min-height: calc((var(--vh, 1vh) * 100) - 64px);
-        min-height: calc(100dvh - 64px);
-        padding: 28px 30px 110px 30px;
-    }
-
-    /* The red ticker is absent on the Step/thank-you screens in the mock —
-       hidden on desktop only, and only outside the landing view.
-       Delete this rule if you want the ticker back. */
-    body:not(.landing-mode) .alert-ticker {
-        display: none;
-    }
-
-        #thankYouView {
-        margin: 0;
-        border-radius: 0;
-        box-shadow: none;
-        background: rgba(255, 255, 255, 0.72);
-        -webkit-backdrop-filter: none;
-        backdrop-filter: none;
-        flex: 1 1 auto;
-        width: auto;
-        max-width: none;
-    }
 </style>
 </head>
 <body>
